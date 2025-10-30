@@ -8,18 +8,20 @@
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
-    <!-- App Bar (toolbar + conteúdo) -->
     <include
         layout="@layout/app_bar_main"
         android:id="@+id/app_bar_main" />
 
-    <!-- Menu lateral -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:background="#1a58a6"
         android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
-        app:headerLayout="@layout/nav_header_main" />
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white"
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>

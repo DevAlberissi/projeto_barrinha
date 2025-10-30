@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+
+    >
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/home"
-            android:title="@string/menu_home" />
 
         <item
-            android:id="@+id/cadastro"
-            android:icon="@drawable/plus"
-            android:title="@string/cadastro" />
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="@string/menu_dashboard"
+            />
+
+        <item
+            android:id="@+id/nav_alunos"
+            android:icon="@drawable/ic_alunos"
+            android:title="@string/menu_alunos"
+            />
+
+        <item
+            android:id="@+id/nav_confirmacao"
+            android:icon="@drawable/ic_confirm"
+            android:title="@string/menu_confirmacao"
+            />
+
+        <item
+            android:id="@+id/nav_detalhes"
+            android:icon="@drawable/ic_detalhes"
+            android:title="@string/menu_detalhes"
+            />
+
     </group>
 </menu>
