@@ -1,13 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundo_geral"
     tools:context=".alunos">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ALUNOS" />
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:background="@color/azul_escuro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Alunos"
+        android:textColor="@color/amarelo_claro"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText"
+        tools:layout_editor_absoluteX="148dp" />
+
+    <ImageButton
+        android:id="@+id/menu_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Menu"
+        android:src="@drawable/ic_menu_white_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/list_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lista de Alunos"
+                    android:textColor="@color/azul_escuro"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/button_adicionar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text=" Adicionar"
+                    android:textColor="@android:color/white"
+                    android:drawableStart="@drawable/ic_add_white_24dp"
+                    android:backgroundTint="@color/azul_escuro"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    tools:ignore="HardcodedText" />
+
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0,1,2,3"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cinza_claro">
+                    <TextView
+                        style="@style/TableHeader"
+                        android:text="NOME" />
+                    <TextView
+                        style="@style/TableHeader"
+                        android:text="ESCOLA" />
+                    <TextView
+                        style="@style/TableHeader"
+                        android:text="ENDEREÇO" />
+                    <TextView
+                        style="@style/TableHeader"
+                        android:text="AÇÕES" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        style="@style/TableData"
+                        android:text="Caralho da Silva" />
+                    <TextView
+                        style="@style/TableData"
+                        android:text="Colégio Cannabis" />
+                    <TextView
+                        style="@style/TableData"
+                        android:text="Rua Bolinha, 123" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageButton
+                            style="@style/TableActionButton"
+                            android:src="@drawable/ic_edit"
+                            android:contentDescription="Editar" />
+                        <ImageButton
+                            style="@style/TableActionButton"
+                            android:src="@drawable/ic_delete"
+                            android:contentDescription="Excluir" />
+                    </LinearLayout>
+                </TableRow>
+
+                <View android:layout_height="1dp" android:background="@color/linha_tabela"/>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        style="@style/TableData"
+                        android:text="Buceta Carvalho" />
+                    <TextView
+                        style="@style/TableData"
+                        android:text="Colégio Cacete" />
+                    <TextView
+                        style="@style/TableData"
+                        android:text="Avenida Pau no Cu, 171" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageButton
+                            style="@style/TableActionButton"
+                            android:src="@drawable/ic_edit"
+                            android:contentDescription="Editar" />
+                        <ImageButton
+                            style="@style/TableActionButton"
+                            android:src="@drawable/ic_delete"
+                            android:contentDescription="Excluir" />
+                    </LinearLayout>
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

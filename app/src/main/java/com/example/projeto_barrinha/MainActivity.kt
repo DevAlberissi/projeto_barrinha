@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import com.example.projeto_barrinha.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,12 +28,23 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        // --- INÍCIO DA CORREÇÃO ---
+        // 1. Encontre o NavHostFragment usando o FragmentManager
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+
+        // 2. Obtenha o NavController a partir do NavHostFragment
+        val navController = navHostFragment.navController
+        // --- FIM DA CORREÇÃO ---
+
+        // O restante do código continua o mesmo, usando o 'navController' que acabamos de obter
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,
             ), drawerLayout
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
