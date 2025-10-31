@@ -14,4 +14,10 @@
     <color name="cinza_claro">#F0F0F0</color>
     <color name="texto_preto">#000000</color>
     <color name="linha_tabela">#FF000000</color>
+
+
+    <color name="primary_dark_blue">#0A2E5D</color>
+    <color name="button_yellow">#FBC02D</color>
+    <color name="hint_grey">#9E9E9E</color>
+
 </resources>
