@@ -3,12 +3,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edit_alunos">
+    android:background="@color/primary_dark_blue"
+    tools:context=".edit_aluno">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fillViewport="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvCadastroTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="Atualizar de Aluno"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome Completo"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/etNomeCompleto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Escola"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/etEscola"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="text"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereço"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/etEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="textPostalAddress"
+                android:layout_marginBottom="32dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Periodo"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/etPeriodo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="textPostalAddress"
+                android:layout_marginBottom="32dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Periodo"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/etResponsavel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="textPostalAddress"
+                android:layout_marginBottom="32dp"/>
+
+
+            <Button
+                android:id="@+id/btnSalvarEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SALVAR"
+                android:background="@drawable/rounded_button_bg"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

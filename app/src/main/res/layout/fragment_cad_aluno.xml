@@ -126,7 +126,7 @@
 
 
             <Button
-                android:id="@+id/btnSalvar"
+                android:id="@+id/btnSalvarCad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SALVAR"
