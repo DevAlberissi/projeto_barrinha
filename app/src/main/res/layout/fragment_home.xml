@@ -110,10 +110,13 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
+            <!-- Coluna Total de Alunos -->
+
             <TextView
                 android:id="@+id/label_alunos_periodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="Alunos no Período (Manhã)"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
@@ -121,55 +124,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/label_confirmados"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Confirmados"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@id/divider"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_alunos_periodo" />
-
-            <TextView
-                android:id="@+id/text_confirmados"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="14"
-                android:textColor="#0D47A1"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@id/label_confirmados"
-                app:layout_constraintStart_toStartOf="@id/label_confirmados"
-                app:layout_constraintTop_toBottomOf="@id/label_confirmados" />
-
-            <!-- Divisor -->
-            <View
-                android:id="@+id/divider"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toBottomOf="@id/text_confirmados"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_alunos_periodo" />
-
-            <!-- Coluna Total de Alunos -->
-            <TextView
                 android:id="@+id/label_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="240dp"
                 android:text="Total de Alunos"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/divider"
                 app:layout_constraintTop_toBottomOf="@id/label_alunos_periodo" />
 
             <TextView
@@ -182,6 +145,7 @@
                 android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/label_total"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/label_total"
                 app:layout_constraintTop_toBottomOf="@id/label_total" />
 
