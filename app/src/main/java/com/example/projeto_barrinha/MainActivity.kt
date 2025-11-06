@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.nav_home,
                 R.id.nav_alunos,
-                R.id.nav_confirmacao,
                 R.id.nav_detalhes
             ), drawerLayout
         )

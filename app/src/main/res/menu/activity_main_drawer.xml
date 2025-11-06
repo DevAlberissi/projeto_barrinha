@@ -10,19 +10,15 @@
                 android:title="Início" />
 
             <item
+                android:id="@+id/nav_detalhes"
+                android:icon="@drawable/ic_editar_perfil"
+                android:title="Usuário" />
+
+            <item
                 android:id="@+id/nav_alunos"
                 android:icon="@drawable/ic_people"
                 android:title="Alunos" />
 
-            <item
-                android:id="@+id/nav_confirmacao"
-                android:icon="@drawable/ic_check_circle"
-                android:title="Confirmação" />
-
-            <item
-                android:id="@+id/nav_detalhes"
-                android:icon="@drawable/ic_info"
-                android:title="Detalhes" />
 
         </group>
 
