@@ -67,10 +67,9 @@
         android:label="Cadastro de Aluno"
         tools:layout="@layout/fragment_cad_aluno" />
 
-    <!-- Tela Confirmação -->
     <fragment
-        android:id="@+id/nav_confirmacao"
-        android:name="com.example.projeto_barrinha.confirmacao"
-        android:label="Confirmação de Presença"
-        tools:layout="@layout/fragment_confirmacao" />
+        android:id="@+id/nav_detalhes"
+        android:name="com.example.projeto_barrinha.DetalhesUsuarioFragment"
+        android:label="Meus Dados"
+        tools:layout="@layout/fragment_detalhes_usuario" />
 </navigation>
