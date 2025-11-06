@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,6 +27,83 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
+            <!-- Nome -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Seu nome completo"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Idade -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Idade"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etIdade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sua idade"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="number"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- CNH -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CNH"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etCNH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número da CNH"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="text"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Telefone -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="(XX) XXXXX-XXXX"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="phone"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Email -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,7 +111,6 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
-
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
@@ -47,6 +122,7 @@
                 android:inputType="textEmailAddress"
                 android:layout_marginBottom="16dp"/>
 
+            <!-- Senha -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,7 +130,6 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
-
             <EditText
                 android:id="@+id/etSenha"
                 android:layout_width="match_parent"
@@ -66,6 +141,7 @@
                 android:inputType="textPassword"
                 android:layout_marginBottom="32dp"/>
 
+            <!-- Botão Registrar -->
             <Button
                 android:id="@+id/btnRegistrar"
                 android:layout_width="match_parent"

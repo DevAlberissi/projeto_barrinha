@@ -2,6 +2,7 @@ package com.example.projeto_barrinha
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
@@ -52,12 +53,10 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.nav_login, R.id.nav_register -> {
-                    // Bloqueia o drawer e remove seta de voltar
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
                 else -> {
-                    // Desbloqueia drawer e habilita seta de voltar
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
@@ -68,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_logout -> {
-                    // Limpa toda a pilha e navega para LoginFragment
                     navController.popBackStack(navController.graph.startDestinationId, true)
                     navController.navigate(R.id.nav_login)
                     drawerLayout.closeDrawers()
@@ -91,5 +89,12 @@ class MainActivity : AppCompatActivity() {
     // --- Botão voltar / Up ---
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    // --- NOVO: Atualizar nome do motorista no header ---
+    fun atualizarNomeHeader(nome: String) {
+        val headerView = binding.navView.getHeaderView(0)
+        val tvNomeMotorista: TextView = headerView.findViewById(R.id.tvNomeMotorista)
+        tvNomeMotorista.text = nome
     }
 }

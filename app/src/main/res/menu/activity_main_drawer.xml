@@ -1,38 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+        <group android:checkableBehavior="single">
+
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home"
+                android:title="Início" />
+
+            <item
+                android:id="@+id/nav_alunos"
+                android:icon="@drawable/ic_people"
+                android:title="Alunos" />
+
+            <item
+                android:id="@+id/nav_confirmacao"
+                android:icon="@drawable/ic_check_circle"
+                android:title="Confirmação" />
+
+            <item
+                android:id="@+id/nav_detalhes"
+                android:icon="@drawable/ic_info"
+                android:title="Detalhes" />
+
+        </group>
 
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_dashboard"
-            android:title="Início" />
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="Sair"
+            android:enabled="true"
+            android:checkable="false" />
 
-        <item
-            android:id="@+id/nav_alunos"
-            android:icon="@drawable/ic_alunos"
-            android:title="Alunos" />
-
-        <item
-            android:id="@+id/nav_confirmacao"
-            android:icon="@drawable/ic_confirm"
-            android:title="Confirmação" />
-
-        <item
-            android:id="@+id/nav_detalhes"
-            android:icon="@drawable/ic_detalhes"
-            android:title="Detalhes" />
-
-    </group>
-
-    <!-- Item Sair -->
-    <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/logout"
-        android:title="Sair"
-        android:enabled="true"
-        android:checkable="false" />
-
-</menu>
+    </menu>

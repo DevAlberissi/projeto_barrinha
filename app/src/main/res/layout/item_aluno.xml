@@ -72,7 +72,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_edit"
+            android:src="@drawable/ic_editar"
             android:contentDescription="Editar"
             android:focusable="false"
             android:focusableInTouchMode="false" />
@@ -82,7 +82,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_delete"
+            android:src="@drawable/ic_deletar"
             android:contentDescription="Excluir"
             android:focusable="false"
             android:focusableInTouchMode="false" />

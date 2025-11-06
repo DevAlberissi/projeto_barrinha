@@ -31,21 +31,31 @@ class LoginFragment : Fragment() {
         tvRegistrar = view.findViewById(R.id.tvRegistrar)
 
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString()
-            val senha = etSenha.text.toString()
+            val email = etEmail.text.toString().trim()
+            val senha = etSenha.text.toString().trim()
 
             if (email.isBlank() || senha.isBlank()) {
                 Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show()
-            } else {
-                val sharedPref = requireActivity().getSharedPreferences("user_prefs", 0)
-                val savedEmail = sharedPref.getString("email", "")
-                val savedSenha = sharedPref.getString("senha", "")
+                return@setOnClickListener
+            }
 
-                if (email == savedEmail && senha == savedSenha) {
-                    findNavController().navigate(R.id.nav_home)
-                } else {
-                    Toast.makeText(requireContext(), "Email ou senha incorretos", Toast.LENGTH_SHORT).show()
-                }
+            val sharedPref = requireActivity().getSharedPreferences("user_prefs", 0)
+            val savedEmail = sharedPref.getString("email", "")
+            val savedSenha = sharedPref.getString("senha", "")
+            val savedNome = sharedPref.getString("nome", "Motorista") // pega o nome do registro
+
+            if (email == savedEmail && senha == savedSenha) {
+                // Atualiza o nome do motorista no header do NavigationView
+                (activity as? MainActivity)?.atualizarNomeHeader(savedNome ?: "Motorista")
+
+                // Limpa os campos de login
+                etEmail.text.clear()
+                etSenha.text.clear()
+
+                // Navega para a tela Home
+                findNavController().navigate(R.id.nav_home)
+            } else {
+                Toast.makeText(requireContext(), "Email ou senha incorretos", Toast.LENGTH_SHORT).show()
             }
         }
 
