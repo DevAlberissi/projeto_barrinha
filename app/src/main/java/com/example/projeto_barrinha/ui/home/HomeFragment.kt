@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.projeto_barrinha.AppDatabase
 import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.databinding.FragmentHomeBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    // Estado inicial do período
     private var periodoAtual = "Manhã"
 
     override fun onCreateView(
@@ -36,22 +40,28 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.nav_alunos)
         }
 
-        // --- NOVO: Alternar Período Atual ---
+
+
         binding.cardPeriodoAtual.setOnClickListener {
-            // Alterna o período
+
             periodoAtual = if (periodoAtual == "Manhã") "Tarde" else "Manhã"
 
-            // Atualiza os textos do card
-            binding.textPeriodo.text = periodoAtual
-            binding.labelAlunosPeriodo.text = "Alunos no Período ($periodoAtual)"
+            atualizarContagem(periodoAtual)
+        }
 
-            // Atualiza os números de exemplo (substitua pelos dados reais)
-            if (periodoAtual == "Manhã") {
-                binding.textConfirmados.text = "14"
-                binding.textTotal.text = "20"
-            } else {
-                binding.textConfirmados.text = "10"
-                binding.textTotal.text = "18"
+        atualizarContagem(periodoAtual)
+    }
+
+    private fun atualizarContagem(periodo: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(requireContext())
+            val contagem = db.alunoDao().contarPorPeriodo(periodo)
+
+            withContext(Dispatchers.Main) {
+                binding.textPeriodo.text = periodo
+
+                binding.labelAlunosPeriodo.text = "Alunos no Período ($periodo)"
+                binding.textTotal.text = contagem.toString()
             }
         }
     }

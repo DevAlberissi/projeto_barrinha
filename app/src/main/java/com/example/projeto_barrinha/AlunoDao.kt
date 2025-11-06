@@ -24,4 +24,7 @@ interface AlunoDao {
 
     @Query("SELECT * FROM alunos WHERE id = :id LIMIT 1")
     suspend fun buscarPorId(id: Int): Aluno?  // método necessário para editar
+
+    @Query("SELECT COUNT(*) FROM alunos WHERE periodo = :periodo")
+    suspend fun contarPorPeriodo(periodo: String): Int
 }
