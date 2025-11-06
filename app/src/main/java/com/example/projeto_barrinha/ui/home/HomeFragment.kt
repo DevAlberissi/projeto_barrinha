@@ -14,6 +14,9 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    // Estado inicial do período
+    private var periodoAtual = "Manhã"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +34,25 @@ class HomeFragment : Fragment() {
 
         binding.buttonVerLista.setOnClickListener {
             findNavController().navigate(R.id.nav_alunos)
+        }
+
+        // --- NOVO: Alternar Período Atual ---
+        binding.cardPeriodoAtual.setOnClickListener {
+            // Alterna o período
+            periodoAtual = if (periodoAtual == "Manhã") "Tarde" else "Manhã"
+
+            // Atualiza os textos do card
+            binding.textPeriodo.text = periodoAtual
+            binding.labelAlunosPeriodo.text = "Alunos no Período ($periodoAtual)"
+
+            // Atualiza os números de exemplo (substitua pelos dados reais)
+            if (periodoAtual == "Manhã") {
+                binding.textConfirmados.text = "14"
+                binding.textTotal.text = "20"
+            } else {
+                binding.textConfirmados.text = "10"
+                binding.textTotal.text = "18"
+            }
         }
     }
 
