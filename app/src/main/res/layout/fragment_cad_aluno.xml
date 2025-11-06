@@ -97,15 +97,12 @@
                 android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
 
-            <EditText
-                android:id="@+id/etPeriodo"
+            <Spinner
+                android:id="@+id/spinnerPeriodo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ex: Manhã, Tarde ou Noite"
-                android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
-                android:inputType="text"
                 android:layout_marginBottom="16dp"/>
 
             <!-- Campo Curso -->

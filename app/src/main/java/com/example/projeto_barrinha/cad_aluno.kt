@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -27,18 +29,23 @@ class cad_aluno : Fragment() {
         val etNomeCompleto: EditText = view.findViewById(R.id.etNomeCompleto)
         val etEscola: EditText = view.findViewById(R.id.etEscola)
         val etEndereco: EditText = view.findViewById(R.id.etEndereco)
-        val etPeriodo: EditText = view.findViewById(R.id.etPeriodo)
+        val spinnerPeriodo: Spinner = view.findViewById(R.id.spinnerPeriodo)
         val etResponsavel: EditText = view.findViewById(R.id.etResponsavel)
-        val etCurso: EditText = view.findViewById(R.id.etCurso) // 👈 NOVA LINHA
+        val etCurso: EditText = view.findViewById(R.id.etCurso)
         val btnSalvar: Button = view.findViewById(R.id.btnSalvarCad)
+
+        val periodos = arrayOf("Manhã", "Tarde")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, periodos)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPeriodo.adapter = adapter
 
         btnSalvar.setOnClickListener {
             val nome = etNomeCompleto.text.toString()
             val escola = etEscola.text.toString()
             val endereco = etEndereco.text.toString()
-            val periodo = etPeriodo.text.toString()
+            val periodo = spinnerPeriodo.selectedItem.toString()
             val responsavel = etResponsavel.text.toString()
-            val curso = etCurso.text.toString() // 👈 NOVA LINHA
+            val curso = etCurso.text.toString()
 
             if (nome.isNotEmpty() && escola.isNotEmpty() && endereco.isNotEmpty() &&
                 periodo.isNotEmpty() && responsavel.isNotEmpty() && curso.isNotEmpty()
@@ -49,7 +56,7 @@ class cad_aluno : Fragment() {
                     endereco = endereco,
                     periodo = periodo,
                     responsavel = responsavel,
-                    curso = curso // 👈 NOVA LINHA
+                    curso = curso
                 )
 
                 lifecycleScope.launch {
