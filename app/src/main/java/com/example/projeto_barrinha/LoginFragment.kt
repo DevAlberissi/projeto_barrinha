@@ -1,0 +1,58 @@
+package com.example.projeto_barrinha
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+
+class LoginFragment : Fragment() {
+
+    private lateinit var etEmail: EditText
+    private lateinit var etSenha: EditText
+    private lateinit var btnLogin: Button
+    private lateinit var tvRegistrar: TextView
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+
+        etEmail = view.findViewById(R.id.etEmail)
+        etSenha = view.findViewById(R.id.etSenha)
+        btnLogin = view.findViewById(R.id.btnLogin)
+        tvRegistrar = view.findViewById(R.id.tvRegistrar)
+
+        btnLogin.setOnClickListener {
+            val email = etEmail.text.toString()
+            val senha = etSenha.text.toString()
+
+            if (email.isBlank() || senha.isBlank()) {
+                Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+            } else {
+                val sharedPref = requireActivity().getSharedPreferences("user_prefs", 0)
+                val savedEmail = sharedPref.getString("email", "")
+                val savedSenha = sharedPref.getString("senha", "")
+
+                if (email == savedEmail && senha == savedSenha) {
+                    findNavController().navigate(R.id.nav_home)
+                } else {
+                    Toast.makeText(requireContext(), "Email ou senha incorretos", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        tvRegistrar.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_login_to_nav_register)
+        }
+
+        return view
+    }
+}

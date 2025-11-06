@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_dark_blue"
-    tools:context=".LoginFragment">
+    tools:context=".RegisterFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,11 +19,11 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tvLoginTitle"
+                android:id="@+id/tvRegisterTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
-                android:text="Login"
+                android:text="Registrar"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -67,22 +67,22 @@
                 android:layout_marginBottom="32dp"/>
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegistrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="LOGIN"
+                android:text="REGISTRAR"
                 android:background="@drawable/rounded_button_bg"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:padding="16dp"/>
 
-            <!-- TextView para ir para tela de registro -->
+            <!-- TextView para ir para Login -->
             <TextView
-                android:id="@+id/tvRegistrar"
+                android:id="@+id/tvGoToLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Não tem conta? Registre-se"
+                android:text="Já tem conta? Login"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_marginTop="16dp"

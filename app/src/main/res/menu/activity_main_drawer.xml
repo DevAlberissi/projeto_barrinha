@@ -26,4 +26,13 @@
             android:title="Detalhes" />
 
     </group>
+
+    <!-- Item Sair -->
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout"
+        android:title="Sair"
+        android:enabled="true"
+        android:checkable="false" />
+
 </menu>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_dark_blue"
-    tools:context=".edit_aluno">
+    tools:context=".edit_alunos">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,109 +17,132 @@
             android:orientation="vertical"
             android:padding="24dp">
 
+            <!-- Título da Tela -->
             <TextView
                 android:id="@+id/tvCadastroTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
-                android:text="Atualizar de Aluno"
+                android:text="Atualizar Aluno"
                 android:textColor="@color/white"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:drawablePadding="12dp"
-                android:gravity="center_vertical" />
+                android:textStyle="bold" />
 
+            <!-- Campo Nome Completo -->
             <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nome Completo"
                 android:textColor="@color/white"
-                android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
-
             <EditText
                 android:id="@+id/etNomeCompleto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Ex: João da Silva"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="16dp"/>
 
+            <!-- Campo Escola -->
             <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Escola"
                 android:textColor="@color/white"
-                android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
-
             <EditText
                 android:id="@+id/etEscola"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Ex: Colégio Exemplo"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
                 android:inputType="text"
                 android:layout_marginBottom="16dp"/>
 
+            <!-- Campo Endereço -->
             <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Endereço"
                 android:textColor="@color/white"
-                android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
-
             <EditText
                 android:id="@+id/etEndereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Ex: Rua das Flores, 123"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
                 android:inputType="textPostalAddress"
-                android:layout_marginBottom="32dp"/>
+                android:layout_marginBottom="16dp"/>
 
+            <!-- Campo Período -->
             <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Periodo"
+                android:text="Período"
                 android:textColor="@color/white"
-                android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
-
             <EditText
                 android:id="@+id/etPeriodo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Ex: Manhã, Tarde ou Noite"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
-                android:inputType="textPostalAddress"
-                android:layout_marginBottom="32dp"/>
+                android:inputType="text"
+                android:layout_marginBottom="16dp"/>
 
+            <!-- Campo Curso -->
             <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Periodo"
+                android:text="Curso"
                 android:textColor="@color/white"
-                android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etCurso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ex: Administração, Informática..."
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="text"
+                android:layout_marginBottom="16dp"/>
 
+            <!-- Campo Responsável -->
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do Responsável"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
             <EditText
                 android:id="@+id/etResponsavel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Ex: Maria da Silva"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
-                android:inputType="textPostalAddress"
+                android:inputType="textPersonName"
                 android:layout_marginBottom="32dp"/>
 
-
+            <!-- Botão Salvar -->
             <Button
                 android:id="@+id/btnSalvarEdit"
                 android:layout_width="match_parent"

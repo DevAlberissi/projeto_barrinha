@@ -5,55 +5,78 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projeto_barrinha.adapter.AlunoAdapter
+import com.example.projeto_barrinha.databinding.FragmentAlunosBinding
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [alunos.newInstance] factory method to
- * create an instance of this fragment.
- */
 class alunos : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentAlunosBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alunos, container, false)
+    ): View {
+        _binding = FragmentAlunosBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment alunos.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            alunos().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Botão para ir até a tela de cadastro
+        binding.buttonAdicionar.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_alunos_to_nav_cad_alunos)
+        }
+
+        // Configura o RecyclerView
+        binding.recyclerAlunos.layoutManager = LinearLayoutManager(requireContext())
+
+        // Carrega os alunos do banco
+        carregarAlunos()
+    }
+
+    private fun carregarAlunos() {
+        lifecycleScope.launch {
+            val db = AppDatabase.getDatabase(requireContext())
+            val alunos = db.alunoDao().listar()
+
+            withContext(Dispatchers.Main) {
+                binding.recyclerAlunos.adapter = AlunoAdapter(
+                    lista = alunos,
+                    onEditar = { aluno ->
+                        // Passa os dados do aluno para o fragment de edição
+                        val bundle = Bundle().apply {
+                            putInt("id", aluno.id)
+                            putString("nome", aluno.nome)
+                            putString("escola", aluno.escola)
+                            putString("endereco", aluno.endereco)
+                            putString("periodo", aluno.periodo)
+                            putString("responsavel", aluno.responsavel)
+                            putString("curso", aluno.curso) // ✅ Agora o curso será enviado
+                        }
+                        findNavController().navigate(R.id.action_nav_alunos_to_nav_edit_alunos, bundle)
+                    },
+                    onExcluir = { aluno ->
+                        // Excluir aluno do banco
+                        lifecycleScope.launch {
+                            db.alunoDao().deletar(aluno)
+                            carregarAlunos() // Recarrega a lista após exclusão
+                        }
+                    }
+                )
             }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

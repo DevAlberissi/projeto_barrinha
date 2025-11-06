@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +8,17 @@
     android:background="@color/fundo_geral"
     tools:context=".alunos">
 
+    <!-- Cabeçalho colorido -->
     <View
         android:id="@+id/header_background"
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:background="@color/azul_escuro"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Título da tela -->
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
@@ -25,12 +28,11 @@
         android:textColor="@color/amarelo_claro"
         android:textSize="36sp"
         android:textStyle="bold"
-
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        tools:ignore="HardcodedText" />
+    <!-- Botão menu -->
     <ImageButton
         android:id="@+id/menu_button"
         android:layout_width="48dp"
@@ -40,29 +42,27 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Menu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
+    <!-- CardView contendo lista -->
     <androidx.cardview.widget.CardView
         android:id="@+id/list_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Título e botão adicionar -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,8 +75,7 @@
                     android:textColor="@color/azul_escuro"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_centerVertical="true"
-                    tools:ignore="HardcodedText" />
+                    android:layout_centerVertical="true"/>
 
                 <Button
                     android:id="@+id/button_adicionar"
@@ -86,86 +85,105 @@
                     android:text=" Adicionar"
                     android:textColor="@android:color/white"
                     android:backgroundTint="@color/azul_escuro"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    tools:ignore="HardcodedText" />
-
+                    style="@style/Widget.AppCompat.Button.Colored"/>
             </RelativeLayout>
 
-            <TableLayout
+            <!-- Cabeçalho da tabela -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="0,1,2,3"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp">
+                android:orientation="horizontal"
+                android:background="@color/cinza_claro"
+                android:padding="8dp">
 
-                <TableRow
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/cinza_claro">
-                    <TextView
-                        style="@style/TableHeader"
-                        android:text="NOME" />
-                    <TextView
-                        style="@style/TableHeader"
-                        android:text="ESCOLA" />
-                    <TextView
-                        style="@style/TableHeader"
-                        android:text="ENDEREÇO" />
-                    <TextView
-                        style="@style/TableHeader"
-                        android:text="RESPONSAVEL" />
-                    <TextView
-                        style="@style/TableHeader"
-                        android:text="PERIODO" />
-                    <TextView
-                        style="@style/TableHeader"
-                        android:text="AÇÕES" />
-                </TableRow>
+                    android:layout_weight="1"
+                    android:text="NOME"
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_escuro"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:gravity="start"/>
 
-                <TableRow
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
-                    <TextView
-                        style="@style/TableData"
-                        android:text="NOME DO ALUNO" />
-                    <TextView
-                        style="@style/TableData"
-                        android:text="NOME DA ESCOLA" />
-                    <TextView
-                        style="@style/TableData"
-                        android:text="ENDEREÇO" />
-                    <TextView
-                        style="@style/TableData"
-                        android:text="NOME DO PAI/MÃE" />
+                    android:layout_weight="1"
+                    android:text="ESCOLA"
+                    android:textColor="@color/azul_escuro"
+                    android:textStyle="bold"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:gravity="start"/>
 
-                    <TextView
-                        style="@style/TableData"
-                        android:text="M/T/N" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ENDEREÇO"
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_escuro"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:gravity="start"/>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <ImageButton
-                            style="@style/TableActionButton"
-                            android:src="@drawable/ic_edit"
-                            android:contentDescription="Editar" />
-                        <ImageButton
-                            style="@style/TableActionButton"
-                            android:src="@drawable/ic_delete"
-                            android:contentDescription="Excluir" />
-                    </LinearLayout>
-                </TableRow>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RESPONSÁVEL"
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_escuro"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:gravity="start"/>
 
-                <View android:layout_height="1dp" android:background="@color/linha_tabela"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PERÍODO"
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_escuro"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:gravity="start"/>
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CURSO"
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_escuro"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:gravity="start"/>
 
-            </TableLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AÇÕES"
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_escuro"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:gravity="center"/>
+            </LinearLayout>
 
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAlunos"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:nestedScrollingEnabled="false"
+                android:padding="8dp"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_aluno"/>
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

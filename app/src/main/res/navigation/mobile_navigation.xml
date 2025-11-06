@@ -2,30 +2,75 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/nav_home">
+    app:startDestination="@id/nav_login">
 
+    <!-- Tela de Login - startDestination -->
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.projeto_barrinha.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" >
+
+        <!-- Ação para ir para Registro -->
+        <action
+            android:id="@+id/action_nav_login_to_nav_register"
+            app:destination="@id/nav_register" />
+    </fragment>
+
+    <!-- Tela de Registro -->
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="com.example.projeto_barrinha.RegisterFragment"
+        android:label="Registrar"
+        tools:layout="@layout/fragment_register" >
+
+        <!-- Ação para voltar para Login -->
+        <action
+            android:id="@+id/action_nav_register_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+
+    <!-- Tela Home -->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.projeto_barrinha.ui.home.HomeFragment"
         android:label="Início"
         tools:layout="@layout/fragment_home" />
 
+    <!-- Tela Editar Alunos -->
+    <fragment
+        android:id="@+id/nav_edit_alunos"
+        android:name="com.example.projeto_barrinha.edit_alunos"
+        android:label="Editar Aluno"
+        tools:layout="@layout/fragment_edit_alunos" />
+
+    <!-- Tela Alunos -->
     <fragment
         android:id="@+id/nav_alunos"
         android:name="com.example.projeto_barrinha.alunos"
         android:label="Alunos"
-        tools:layout="@layout/fragment_alunos" />
+        tools:layout="@layout/fragment_alunos" >
 
+        <action
+            android:id="@+id/action_nav_alunos_to_nav_cad_alunos"
+            app:destination="@id/nav_cad_alunos" />
+
+        <action
+            android:id="@+id/action_nav_alunos_to_nav_edit_alunos"
+            app:destination="@id/nav_edit_alunos" />
+    </fragment>
+
+    <!-- Tela Cadastro Alunos -->
     <fragment
         android:id="@+id/nav_cad_alunos"
         android:name="com.example.projeto_barrinha.cad_aluno"
         android:label="Cadastro de Aluno"
         tools:layout="@layout/fragment_cad_aluno" />
 
+    <!-- Tela Confirmação -->
     <fragment
         android:id="@+id/nav_confirmacao"
         android:name="com.example.projeto_barrinha.confirmacao"
         android:label="Confirmação de Presença"
         tools:layout="@layout/fragment_confirmacao" />
-
 </navigation>

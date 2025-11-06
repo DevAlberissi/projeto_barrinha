@@ -2,21 +2,21 @@ package com.example.projeto_barrinha
 
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
 import com.example.projeto_barrinha.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: androidx.navigation.NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,24 +29,58 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 
-        // --- INÍCIO DA CORREÇÃO ---
-        // 1. Encontre o NavHostFragment usando o FragmentManager
+        // --- Obter NavController ---
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+        navController = navHostFragment.navController
+        // -----------------------------
 
-        // 2. Obtenha o NavController a partir do NavHostFragment
-        val navController = navHostFragment.navController
-        // --- FIM DA CORREÇÃO ---
-
-        // O restante do código continua o mesmo, usando o 'navController' que acabamos de obter
+        // Configurar AppBar e DrawerLayout
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,
+                R.id.nav_alunos,
+                R.id.nav_confirmacao,
+                R.id.nav_detalhes
             ), drawerLayout
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // --- Bloquear/Desbloquear Drawer conforme a tela ---
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.nav_login, R.id.nav_register -> {
+                    // Bloqueia o drawer e remove seta de voltar
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
+                else -> {
+                    // Desbloqueia drawer e habilita seta de voltar
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                }
+            }
+        }
+
+        // --- Item "Sair" no Navigation Drawer ---
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_logout -> {
+                    // Limpa toda a pilha e navega para LoginFragment
+                    navController.popBackStack(navController.graph.startDestinationId, true)
+                    navController.navigate(R.id.nav_login)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+                else -> {
+                    NavigationUI.onNavDestinationSelected(menuItem, navController)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,8 +88,8 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    // --- Botão voltar / Up ---
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
