@@ -15,6 +15,11 @@
         <action
             android:id="@+id/action_nav_login_to_nav_register"
             app:destination="@id/nav_register" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <!-- Tela de Registro -->
@@ -30,24 +35,33 @@
             app:destination="@id/nav_login" />
     </fragment>
 
+
     <!-- Tela Home -->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.projeto_barrinha.ui.home.HomeFragment"
         android:label="Início"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_alunos"
+            app:destination="@id/nav_alunos" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_cad_alunos"
+            app:destination="@id/nav_cad_alunos" />
+    </fragment>
 
     <!-- Tela Editar Alunos -->
     <fragment
         android:id="@+id/nav_edit_alunos"
-        android:name="com.example.projeto_barrinha.edit_alunos"
+        android:name="com.example.projeto_barrinha.EditAlunosFragment"
         android:label="Editar Aluno"
         tools:layout="@layout/fragment_edit_alunos" />
 
     <!-- Tela Alunos -->
     <fragment
         android:id="@+id/nav_alunos"
-        android:name="com.example.projeto_barrinha.alunos"
+        android:name="com.example.projeto_barrinha.AlunosFragment"
         android:label="Alunos"
         tools:layout="@layout/fragment_alunos" >
 
@@ -63,7 +77,7 @@
     <!-- Tela Cadastro Alunos -->
     <fragment
         android:id="@+id/nav_cad_alunos"
-        android:name="com.example.projeto_barrinha.cad_aluno"
+        android:name="com.example.projeto_barrinha.CadAlunoFragment"
         android:label="Cadastro de Aluno"
         tools:layout="@layout/fragment_cad_aluno" />
 
@@ -72,4 +86,5 @@
         android:name="com.example.projeto_barrinha.DetalhesUsuarioFragment"
         android:label="Meus Dados"
         tools:layout="@layout/fragment_detalhes_usuario" />
+
 </navigation>

@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class alunos : Fragment() {
+class AlunosFragment : Fragment() {
 
     private var _binding: FragmentAlunosBinding? = null
     private val binding get() = _binding!!

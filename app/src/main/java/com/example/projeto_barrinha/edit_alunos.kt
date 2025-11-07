@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class edit_alunos : Fragment() {
+class EditAlunosFragment : Fragment() {
 
     private lateinit var etNomeCompleto: EditText
     private lateinit var etEscola: EditText

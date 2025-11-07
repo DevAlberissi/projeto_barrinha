@@ -52,8 +52,8 @@ class LoginFragment : Fragment() {
                 etEmail.text.clear()
                 etSenha.text.clear()
 
-                // Navega para a tela Home
-                findNavController().navigate(R.id.nav_home)
+                // Navega para a tela Home usando a AÇÃO correta
+                findNavController().navigate(R.id.action_nav_login_to_nav_home)
             } else {
                 Toast.makeText(requireContext(), "Email ou senha incorretos", Toast.LENGTH_SHORT).show()
             }
