@@ -20,9 +20,9 @@
                 android:title="Alunos" />
 
             <item
-                android:id="@+id/nav_cad_responsavel"
+                android:id="@+id/nav_lista_responsaveis"
                 android:icon="@drawable/ic_people"
-                android:title="Novo Responsável" />
+                android:title="Responsáveis" />
 
 
         </group>

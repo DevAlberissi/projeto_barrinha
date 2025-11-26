@@ -82,9 +82,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.nav_cad_responsavel -> {
+                R.id.nav_lista_responsaveis -> {
                     navController.popBackStack(R.id.nav_home, false) // Opcional: limpa a pilha
-                    navController.navigate(R.id.nav_cad_responsavel)
+                    navController.navigate(R.id.nav_lista_responsaveis)
                     drawerLayout.closeDrawers()
                     true
                 }

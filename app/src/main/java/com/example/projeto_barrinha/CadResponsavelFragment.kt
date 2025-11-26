@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +16,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CadResponsavelFragment : Fragment() {
+
+    private var idResponsavelAtual: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +34,17 @@ class CadResponsavelFragment : Fragment() {
         val etTelefone = view.findViewById<EditText>(R.id.etRespTelefone)
         val etEndereco = view.findViewById<EditText>(R.id.etRespEndereco)
         val btnSalvar = view.findViewById<Button>(R.id.btnSalvarResponsavel)
+        val tvTitulo = view.findViewById<TextView>(R.id.tvTituloResponsavel) // Se tiveres ID no título
+
+        val idRecebido = arguments?.getInt("idResponsavel", 0) ?: 0
+
+        if (idRecebido > 0) {
+            idResponsavelAtual = idRecebido
+            tvTitulo.text = "Editar Responsável"
+            btnSalvar.text = "Atualizar"
+
+            carregarDados(idRecebido, etNome, etCpf, etTelefone, etEndereco)
+        }
 
         btnSalvar.setOnClickListener {
             val nome = etNome.text.toString()
@@ -39,26 +53,51 @@ class CadResponsavelFragment : Fragment() {
             val endereco = etEndereco.text.toString()
 
             if (nome.isNotEmpty() && telefone.isNotEmpty()) {
-
-                val novoResponsavel = Responsavel(
-                    nome = nome,
-                    cpf = cpf,
-                    telefone = telefone,
-                    endereco = endereco
-                )
-
                 lifecycleScope.launch(Dispatchers.IO) {
                     val db = AppDatabase.getDatabase(requireContext())
-                    db.responsavelDao().inserir(novoResponsavel)
+
+                    if (idResponsavelAtual != null) {
+                        val respEditado = Responsavel(
+                            id = idResponsavelAtual!!,
+                            nome = nome,
+                            cpf = cpf,
+                            telefone = telefone,
+                            endereco = endereco
+                        )
+                        db.responsavelDao().atualizar(respEditado)
+                    } else {
+                        val novoResp = Responsavel(
+                            nome = nome,
+                            cpf = cpf,
+                            telefone = telefone,
+                            endereco = endereco
+                        )
+                        db.responsavelDao().inserir(novoResp)
+                    }
 
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(context, "Responsável salvo com sucesso!", Toast.LENGTH_SHORT).show()
-
+                        Toast.makeText(context, "Salvo com sucesso!", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
                     }
                 }
             } else {
-                Toast.makeText(context, "Preencha pelo menos Nome e Telefone!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Preencha os campos obrigatórios", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun carregarDados(id: Int, etNome: EditText, etCpf: EditText, etTel: EditText, etEnd: EditText) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(requireContext())
+            val responsavel = db.responsavelDao().buscarPorId(id)
+
+            withContext(Dispatchers.Main) {
+                responsavel?.let {
+                    etNome.setText(it.nome)
+                    etCpf.setText(it.cpf)
+                    etTel.setText(it.telefone)
+                    etEnd.setText(it.endereco)
+                }
             }
         }
     }

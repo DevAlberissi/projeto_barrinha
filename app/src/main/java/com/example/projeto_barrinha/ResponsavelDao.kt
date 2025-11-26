@@ -22,7 +22,7 @@ interface ResponsavelDao {
     suspend fun listarTodos(): List<Responsavel>
 
     @Query("SELECT * FROM responsaveis WHERE id = :id")
-    suspend fun buscarPorId(id: Long): Responsavel?
+    suspend fun buscarPorId(id: Int): Responsavel?
 
     @Query("SELECT * FROM responsaveis WHERE nome LIKE '%' || :nome || '%'")
     suspend fun buscarPorNome(nome: String): List<Responsavel>

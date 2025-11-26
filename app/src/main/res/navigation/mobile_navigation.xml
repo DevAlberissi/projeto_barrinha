@@ -78,4 +78,10 @@
         android:name="com.example.projeto_barrinha.CadResponsavelFragment"
         android:label="Cadastro de Responsável"
         tools:layout="@layout/fragment_cad_responsavel" />
+
+    <fragment
+        android:id="@+id/nav_lista_responsaveis"
+        android:name="com.example.projeto_barrinha.ResponsaveisFragment"
+        android:label="Meus Responsáveis"
+        tools:layout="@layout/fragment_responsaveis" />
 </navigation>
