@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -58,7 +59,7 @@ class ResponsaveisFragment : Fragment() {
                         Toast.makeText(context, "Editar: ${responsavel.nome}", Toast.LENGTH_SHORT).show()
                     },
                     onExcluir = { responsavel ->
-                        excluirResponsavel(responsavel)
+                        confirmarExclusao(responsavel)
                     }
                 )
             }
@@ -75,5 +76,16 @@ class ResponsaveisFragment : Fragment() {
                 carregarLista()
             }
         }
+    }
+
+    private fun confirmarExclusao(responsavel: Responsavel) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Excluir Responsável?")
+            .setMessage("Tem certeza que deseja excluir ${responsavel.nome}?\n\nATENÇÃO: Todos os alunos vinculados a este responsável também serão apagados!")
+            .setPositiveButton("Sim") { _, _ ->
+                excluirResponsavel(responsavel)
+            }
+            .setNegativeButton("Não", null)
+            .show()
     }
 }

@@ -61,8 +61,7 @@ class alunos : Fragment() {
                     },
                     onExcluir = { aluno ->
                         lifecycleScope.launch {
-                            db.alunoDao().deletar(aluno)
-                            carregarAlunos()
+                            confirmarExclusao(aluno)
                         }
                     }
                 )
@@ -73,5 +72,28 @@ class alunos : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun excluirAluno(aluno: Aluno) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(requireContext())
+            db.alunoDao().deletar(aluno)
+
+            withContext(Dispatchers.Main) {
+                android.widget.Toast.makeText(context, "Aluno removido!", android.widget.Toast.LENGTH_SHORT).show()
+                carregarAlunos()
+            }
+        }
+    }
+
+    private fun confirmarExclusao(aluno: Aluno) {
+        androidx.appcompat.app.AlertDialog.Builder(requireContext())
+            .setTitle("Excluir Aluno?")
+            .setMessage("Tem certeza que deseja excluir o aluno(a) ${aluno.nome}?")
+            .setPositiveButton("Sim") { _, _ ->
+                excluirAluno(aluno)
+            }
+            .setNegativeButton("Não", null)
+            .show()
     }
 }

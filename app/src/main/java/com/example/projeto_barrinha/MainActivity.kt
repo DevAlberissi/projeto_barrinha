@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes, R.id.nav_cad_responsavel),
+            setOf(R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes, R.id.nav_lista_responsaveis),
             drawerLayout
         )
 
