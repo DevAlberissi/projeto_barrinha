@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_editar"
+                android:src="@drawable/ic_edit"
                 android:padding="8dp" />
 
             <ImageButton
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_deletar"
+                android:src="@drawable/ic_delete"
                 android:padding="8dp" />
         </LinearLayout>
 
