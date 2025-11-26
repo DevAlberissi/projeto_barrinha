@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projeto_barrinha.dao.AlunoDao
 
-@Database(entities = [Aluno::class], version = 1)
+@Database(entities = [Aluno::class, Responsavel::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun alunoDao(): AlunoDao
+    abstract fun responsavelDao(): ResponsavelDao
 
     companion object {
         @Volatile
@@ -21,9 +22,11 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "banco_barrinha"
-                ).build()
-                INSTANCE = instance
-                instance
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+                    INSTANCE = instance
+                    instance
             }
         }
     }

@@ -12,9 +12,12 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class cad_aluno : Fragment() {
+    private var listaResponsaveis: List<Responsavel> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +33,7 @@ class cad_aluno : Fragment() {
         val etEscola: EditText = view.findViewById(R.id.etEscola)
         val etEndereco: EditText = view.findViewById(R.id.etEndereco)
         val spinnerPeriodo: Spinner = view.findViewById(R.id.spinnerPeriodo)
-        val etResponsavel: EditText = view.findViewById(R.id.etResponsavel)
+        val spinnerResponsavel: Spinner = view.findViewById(R.id.spinnerResponsavel)
         val etCurso: EditText = view.findViewById(R.id.etCurso)
         val btnSalvar: Button = view.findViewById(R.id.btnSalvarCad)
 
@@ -38,38 +41,58 @@ class cad_aluno : Fragment() {
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, periodos)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPeriodo.adapter = adapter
+        carregarResponsaveis()
 
         btnSalvar.setOnClickListener {
             val nome = etNomeCompleto.text.toString()
             val escola = etEscola.text.toString()
             val endereco = etEndereco.text.toString()
             val periodo = spinnerPeriodo.selectedItem.toString()
-            val responsavel = etResponsavel.text.toString()
             val curso = etCurso.text.toString()
 
-            if (nome.isNotEmpty() && escola.isNotEmpty() && endereco.isNotEmpty() &&
-                periodo.isNotEmpty() && responsavel.isNotEmpty() && curso.isNotEmpty()
-            ) {
-                val aluno = Aluno(
-                    nome = nome,
-                    escola = escola,
-                    endereco = endereco,
-                    periodo = periodo,
-                    responsavel = responsavel,
-                    curso = curso
-                )
+            val posicaoResponsavel = spinnerResponsavel.selectedItemPosition
 
-                lifecycleScope.launch {
-                    val db = AppDatabase.getDatabase(requireContext())
-                    db.alunoDao().inserir(aluno)
+            if (posicaoResponsavel != Spinner.INVALID_POSITION && listaResponsaveis.isNotEmpty()) {
+                val idResponsavel = listaResponsaveis[posicaoResponsavel].id
 
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(context, "Aluno salvo com sucesso!", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.nav_alunos)
+                if (nome.isNotEmpty() && escola.isNotEmpty() && endereco.isNotEmpty() && periodo.isNotEmpty() && curso.isNotEmpty()) {
+                    val aluno = Aluno(
+                        nome = nome,
+                        escola = escola,
+                        endereco = endereco,
+                        periodo = periodo,
+                        responsavelId = idResponsavel,
+                        curso = curso
+                    )
+
+                    lifecycleScope.launch {
+                        val db = AppDatabase.getDatabase(requireContext())
+                        db.alunoDao().inserir(aluno)
+
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(context, "Aluno salvo com sucesso!", Toast.LENGTH_SHORT)
+                                .show()
+                            findNavController().navigate(R.id.nav_alunos)
+                        }
                     }
+                } else {
+                    Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Selecione um responsável!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun carregarResponsaveis() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(requireContext())
+            listaResponsaveis = db.responsavelDao().listarTodos()
+            withContext(Dispatchers.Main) {
+                val nomes = listaResponsaveis.map { it.nome }
+                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, nomes)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                view?.findViewById<Spinner>(R.id.spinnerResponsavel)?.adapter = adapter
             }
         }
     }

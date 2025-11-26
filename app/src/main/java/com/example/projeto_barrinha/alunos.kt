@@ -30,44 +30,39 @@ class alunos : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Botão para ir até a tela de cadastro
         binding.buttonAdicionar.setOnClickListener {
             findNavController().navigate(R.id.action_nav_alunos_to_nav_cad_alunos)
         }
 
-        // Configura o RecyclerView
         binding.recyclerAlunos.layoutManager = LinearLayoutManager(requireContext())
 
-        // Carrega os alunos do banco
         carregarAlunos()
     }
 
     private fun carregarAlunos() {
         lifecycleScope.launch {
             val db = AppDatabase.getDatabase(requireContext())
-            val alunos = db.alunoDao().listar()
+            val listaComResponsavel = db.alunoDao().listarComResponsavel()
 
             withContext(Dispatchers.Main) {
                 binding.recyclerAlunos.adapter = AlunoAdapter(
-                    lista = alunos,
+                    lista = listaComResponsavel,
                     onEditar = { aluno ->
-                        // Passa os dados do aluno para o fragment de edição
                         val bundle = Bundle().apply {
                             putInt("id", aluno.id)
                             putString("nome", aluno.nome)
                             putString("escola", aluno.escola)
                             putString("endereco", aluno.endereco)
                             putString("periodo", aluno.periodo)
-                            putString("responsavel", aluno.responsavel)
-                            putString("curso", aluno.curso) // ✅ Agora o curso será enviado
+                            putInt("responsavelId", aluno.responsavelId)
+                            putString("curso", aluno.curso)
                         }
                         findNavController().navigate(R.id.action_nav_alunos_to_nav_edit_alunos, bundle)
                     },
                     onExcluir = { aluno ->
-                        // Excluir aluno do banco
                         lifecycleScope.launch {
                             db.alunoDao().deletar(aluno)
-                            carregarAlunos() // Recarrega a lista após exclusão
+                            carregarAlunos()
                         }
                     }
                 )

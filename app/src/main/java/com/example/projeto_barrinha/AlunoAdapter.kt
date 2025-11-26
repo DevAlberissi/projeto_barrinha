@@ -8,10 +8,11 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projeto_barrinha.Aluno
+import com.example.projeto_barrinha.AlunoComResponsavel
 import com.example.projeto_barrinha.R
 
 class AlunoAdapter(
-    private val lista: List<Aluno>,
+    private val lista: List<AlunoComResponsavel>,
     private val onEditar: (Aluno) -> Unit,
     private val onExcluir: (Aluno) -> Unit
 ) : RecyclerView.Adapter<AlunoAdapter.AlunoViewHolder>() {
@@ -34,26 +35,24 @@ class AlunoAdapter(
     }
 
     override fun onBindViewHolder(holder: AlunoViewHolder, position: Int) {
-        val aluno = lista[position]
+        val item = lista[position]
 
         // Preenche os campos da lista
-        holder.txtNome.text = aluno.nome
-        holder.txtEscola.text = aluno.escola
-        holder.txtEndereco.text = aluno.endereco
-        holder.txtResponsavel.text = aluno.responsavel
-        holder.txtPeriodo.text = aluno.periodo
-        holder.txtCurso.text = aluno.curso
+        holder.txtNome.text = item.aluno.nome
+        holder.txtEscola.text = item.aluno.escola
+        holder.txtEndereco.text = item.aluno.endereco
+        holder.txtPeriodo.text = item.aluno.periodo
+        holder.txtCurso.text = item.aluno.curso
+        holder.txtResponsavel.text = item.responsavel.nome
 
-        // Botão Editar
         holder.btnEditar.setOnClickListener {
-            Log.d("AlunoAdapter", "Editar clicado: ${aluno.nome}")
-            onEditar(aluno) // Passa o objeto completo
+            Log.d("AlunoAdapter", "Editar clicado: ${item.aluno.nome}")
+            onEditar(item.aluno) // Passa o objeto completo
         }
 
-        // Botão Excluir
         holder.btnExcluir.setOnClickListener {
-            Log.d("AlunoAdapter", "Excluir clicado: ${aluno.nome}")
-            onExcluir(aluno)
+            Log.d("AlunoAdapter", "Excluir clicado: ${item.aluno.nome}")
+            onExcluir(item.aluno)
         }
     }
 

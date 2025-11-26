@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_dark_blue"
-    tools:context=".edit_alunos">
+    tools:context=".CadResponsavelFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,18 +17,16 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- Título da Tela -->
             <TextView
-                android:id="@+id/tvCadastroTitle"
+                android:id="@+id/tvTituloResponsavel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
-                android:text="Atualizar Aluno"
+                android:text="Novo Responsável"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <!-- Campo Nome Completo -->
             <TextView
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
@@ -37,114 +35,75 @@
                 android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
             <EditText
-                android:id="@+id/etNomeCompleto"
+                android:id="@+id/etRespNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ex: João da Silva"
+                android:hint="Ex: Maria da Silva"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Campo Escola -->
             <TextView
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Escola"
+                android:text="CPF"
                 android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
             <EditText
-                android:id="@+id/etEscola"
+                android:id="@+id/etRespCpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ex: Colégio Exemplo"
+                android:hint="000.000.000-00"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
-                android:inputType="text"
+                android:inputType="number"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Campo Endereço -->
             <TextView
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Endereço"
+                android:text="Telefone / WhatsApp"
                 android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
             <EditText
-                android:id="@+id/etEndereco"
+                android:id="@+id/etRespTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ex: Rua das Flores, 123"
+                android:hint="(XX) 9XXXX-XXXX"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="phone"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereço Principal"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etRespEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rua, Número, Bairro"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
                 android:inputType="textPostalAddress"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="32dp"/>
 
-            <!-- Campo Período -->
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Período"
-                android:textColor="@color/white"
-                android:layout_marginBottom="8dp"/>
-            <EditText
-                android:id="@+id/etPeriodo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ex: Manhã, Tarde ou Noite"
-                android:textColorHint="@color/hint_grey"
-                android:background="@drawable/rounded_edittext_bg"
-                android:padding="16dp"
-                android:inputType="text"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Campo Curso -->
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Curso"
-                android:textColor="@color/white"
-                android:layout_marginBottom="8dp"/>
-            <EditText
-                android:id="@+id/etCurso"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ex: Administração, Informática..."
-                android:textColorHint="@color/hint_grey"
-                android:background="@drawable/rounded_edittext_bg"
-                android:padding="16dp"
-                android:inputType="text"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Campo Responsável -->
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nome do Responsável"
-                android:textColor="@color/white"
-                android:layout_marginBottom="8dp"/>
-            <Spinner
-                android:id="@+id/spinnerResponsavelEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_edittext_bg"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Botão Salvar -->
             <Button
-                android:id="@+id/btnSalvarEdit"
+                android:id="@+id/btnSalvarResponsavel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SALVAR"
+                android:text="SALVAR RESPONSÁVEL"
                 android:background="@drawable/rounded_button_bg"
                 android:textColor="@color/white"
                 android:textStyle="bold"

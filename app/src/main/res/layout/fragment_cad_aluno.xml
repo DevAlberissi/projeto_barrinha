@@ -134,16 +134,13 @@
                 android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
 
-            <EditText
-                android:id="@+id/etResponsavel"
+            <Spinner
+                android:id="@+id/spinnerResponsavel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ex: Maria da Silva"
-                android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
-                android:inputType="textPersonName"
-                android:layout_marginBottom="32dp"/>
+                android:layout_marginBottom="16dp"/>
 
             <!-- Botão Salvar -->
             <Button
