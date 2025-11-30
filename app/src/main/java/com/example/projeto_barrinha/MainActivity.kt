@@ -29,14 +29,12 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 
-        // --- Obter NavController ---
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         navController = navHostFragment.navController
 
-        // --- AppBarConfiguration ---
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes),
+            setOf(R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes, R.id.nav_lista_responsaveis),
             drawerLayout
         )
 
@@ -44,22 +42,16 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            // Se estivermos em uma tela de autenticação (login/registro)
             if (destination.id == R.id.nav_login || destination.id == R.id.nav_register) {
-                // Bloqueia o menu lateral
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                // Esconde o ícone de navegação (seja a seta ou o ícone do menu)
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             } else {
-                // Para todas as outras telas, desbloqueia o menu
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                // E garante que o ícone de navegação seja exibido
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
             }
         }
 
 
-        // --- Navigation manual para itens do Drawer ---
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
 
@@ -70,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_alunos -> {
-                    navController.popBackStack(R.id.nav_home, false) // garante voltar para home
+                    navController.popBackStack(R.id.nav_home, false)
                     navController.navigate(R.id.nav_alunos)
                     drawerLayout.closeDrawers()
                     true
@@ -86,6 +78,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_logout -> {
                     navController.popBackStack(navController.graph.startDestinationId, true)
                     navController.navigate(R.id.nav_login)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+
+                R.id.nav_lista_responsaveis -> {
+                    navController.popBackStack(R.id.nav_home, false) // Opcional: limpa a pilha
+                    navController.navigate(R.id.nav_lista_responsaveis)
                     drawerLayout.closeDrawers()
                     true
                 }

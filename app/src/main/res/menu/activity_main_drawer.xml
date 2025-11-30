@@ -19,6 +19,11 @@
                 android:icon="@drawable/ic_people"
                 android:title="Alunos" />
 
+            <item
+                android:id="@+id/nav_lista_responsaveis"
+                android:icon="@drawable/ic_people"
+                android:title="Responsáveis" />
+
 
         </group>
 

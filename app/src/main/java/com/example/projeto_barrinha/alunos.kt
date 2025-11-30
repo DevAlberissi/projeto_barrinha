@@ -30,44 +30,38 @@ class AlunosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Botão para ir até a tela de cadastro
-        binding.buttonAdicionar.setOnClickListener {
+        binding.fabAddAluno.setOnClickListener {
             findNavController().navigate(R.id.action_nav_alunos_to_nav_cad_alunos)
         }
 
-        // Configura o RecyclerView
         binding.recyclerAlunos.layoutManager = LinearLayoutManager(requireContext())
 
-        // Carrega os alunos do banco
         carregarAlunos()
     }
 
     private fun carregarAlunos() {
         lifecycleScope.launch {
             val db = AppDatabase.getDatabase(requireContext())
-            val alunos = db.alunoDao().listar()
+            val listaComResponsavel = db.alunoDao().listarComResponsavel()
 
             withContext(Dispatchers.Main) {
                 binding.recyclerAlunos.adapter = AlunoAdapter(
-                    lista = alunos,
+                    lista = listaComResponsavel,
                     onEditar = { aluno ->
-                        // Passa os dados do aluno para o fragment de edição
                         val bundle = Bundle().apply {
                             putInt("id", aluno.id)
                             putString("nome", aluno.nome)
                             putString("escola", aluno.escola)
                             putString("endereco", aluno.endereco)
                             putString("periodo", aluno.periodo)
-                            putString("responsavel", aluno.responsavel)
-                            putString("curso", aluno.curso) // ✅ Agora o curso será enviado
+                            putInt("responsavelId", aluno.responsavelId)
+                            putString("curso", aluno.curso)
                         }
                         findNavController().navigate(R.id.action_nav_alunos_to_nav_edit_alunos, bundle)
                     },
                     onExcluir = { aluno ->
-                        // Excluir aluno do banco
                         lifecycleScope.launch {
-                            db.alunoDao().deletar(aluno)
-                            carregarAlunos() // Recarrega a lista após exclusão
+                            confirmarExclusao(aluno)
                         }
                     }
                 )
@@ -78,5 +72,28 @@ class AlunosFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun excluirAluno(aluno: Aluno) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(requireContext())
+            db.alunoDao().deletar(aluno)
+
+            withContext(Dispatchers.Main) {
+                android.widget.Toast.makeText(context, "Aluno removido!", android.widget.Toast.LENGTH_SHORT).show()
+                carregarAlunos()
+            }
+        }
+    }
+
+    private fun confirmarExclusao(aluno: Aluno) {
+        androidx.appcompat.app.AlertDialog.Builder(requireContext())
+            .setTitle("Excluir Aluno?")
+            .setMessage("Tem certeza que deseja excluir o aluno(a) ${aluno.nome}?")
+            .setPositiveButton("Sim") { _, _ ->
+                excluirAluno(aluno)
+            }
+            .setNegativeButton("Não", null)
+            .show()
     }
 }

@@ -4,8 +4,10 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.example.projeto_barrinha.Aluno
+import com.example.projeto_barrinha.AlunoComResponsavel
 
 @Dao
 interface AlunoDao {
@@ -27,4 +29,8 @@ interface AlunoDao {
 
     @Query("SELECT COUNT(*) FROM alunos WHERE periodo = :periodo")
     suspend fun contarPorPeriodo(periodo: String): Int
+
+    @Transaction
+    @Query("SELECT * FROM alunos")
+    suspend fun listarComResponsavel(): List<AlunoComResponsavel>
 }

@@ -87,4 +87,15 @@
         android:label="Meus Dados"
         tools:layout="@layout/fragment_detalhes_usuario" />
 
+    <fragment
+        android:id="@+id/nav_cad_responsavel"
+        android:name="com.example.projeto_barrinha.CadResponsavelFragment"
+        android:label="Cadastro de Responsável"
+        tools:layout="@layout/fragment_cad_responsavel" />
+
+    <fragment
+        android:id="@+id/nav_lista_responsaveis"
+        android:name="com.example.projeto_barrinha.ResponsaveisFragment"
+        android:label="Responsáveis"
+        tools:layout="@layout/fragment_responsaveis" />
 </navigation>

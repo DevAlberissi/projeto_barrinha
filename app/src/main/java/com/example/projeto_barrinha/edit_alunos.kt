@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -19,11 +21,13 @@ class EditAlunosFragment : Fragment() {
     private lateinit var etEscola: EditText
     private lateinit var etEndereco: EditText
     private lateinit var etPeriodo: EditText
-    private lateinit var etResponsavel: EditText
+    private lateinit var spinnerResponsavel: Spinner
     private lateinit var etCurso: EditText
     private lateinit var btnSalvarEdit: Button
 
     private var alunoId: Int? = null
+    private var responsavelIdAtual: Int? = null
+    private var listaResponsaveis: List<Responsavel> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,29 +35,50 @@ class EditAlunosFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_alunos, container, false)
 
-        // Vincula os EditTexts
         etNomeCompleto = view.findViewById(R.id.etNomeCompleto)
         etEscola = view.findViewById(R.id.etEscola)
         etEndereco = view.findViewById(R.id.etEndereco)
         etPeriodo = view.findViewById(R.id.etPeriodo)
-        etResponsavel = view.findViewById(R.id.etResponsavel)
+        spinnerResponsavel = view.findViewById(R.id.spinnerResponsavelEdit)
         etCurso = view.findViewById(R.id.etCurso)
         btnSalvarEdit = view.findViewById(R.id.btnSalvarEdit)
 
-        // Recebe dados do Bundle e preenche os campos
         arguments?.let { bundle ->
             alunoId = bundle.getInt("id")
+            responsavelIdAtual = bundle.getInt("responsavelId")
             etNomeCompleto.setText(bundle.getString("nome"))
             etEscola.setText(bundle.getString("escola"))
             etEndereco.setText(bundle.getString("endereco"))
             etPeriodo.setText(bundle.getString("periodo"))
-            etResponsavel.setText(bundle.getString("responsavel"))
-            etCurso.setText(bundle.getString("curso")) // ✅ Agora o curso vem preenchido
+            etCurso.setText(bundle.getString("curso"))
         }
+
+        carregarResponsaveis()
 
         btnSalvarEdit.setOnClickListener { salvarAluno() }
 
         return view
+    }
+
+    private fun carregarResponsaveis() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(requireContext())
+            listaResponsaveis = db.responsavelDao().listarTodos()
+
+            withContext(Dispatchers.Main) {
+                val nomes = listaResponsaveis.map { it.nome }
+                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, nomes)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerResponsavel.adapter = adapter
+
+                responsavelIdAtual?.let { idProcurado ->
+                    val posicao = listaResponsaveis.indexOfFirst { it.id == idProcurado }
+                    if (posicao >= 0) {
+                        spinnerResponsavel.setSelection(posicao)
+                    }
+                }
+            }
+        }
     }
 
     private fun salvarAluno() {
@@ -61,36 +86,36 @@ class EditAlunosFragment : Fragment() {
         val escola = etEscola.text.toString()
         val endereco = etEndereco.text.toString()
         val periodo = etPeriodo.text.toString()
-        val responsavel = etResponsavel.text.toString()
         val curso = etCurso.text.toString()
 
-        if (nome.isBlank() || escola.isBlank()) {
-            Toast.makeText(requireContext(), "Nome e Escola são obrigatórios", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val posicaoSelecionada = spinnerResponsavel.selectedItemPosition
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val db = AppDatabase.getDatabase(requireContext())
-            if (alunoId != null) {
-                val aluno = db.alunoDao().buscarPorId(alunoId!!)
-                if (aluno != null) {
-                    // Atualiza todos os campos
-                    aluno.nome = nome
-                    aluno.escola = escola
-                    aluno.endereco = endereco
-                    aluno.periodo = periodo
-                    aluno.responsavel = responsavel
-                    aluno.curso = curso // ✅ Atualiza curso também
+        if (posicaoSelecionada != Spinner.INVALID_POSITION && listaResponsaveis.isNotEmpty()) {
+            val responsavelSelecionado = listaResponsaveis[posicaoSelecionada]
 
-                    // Salva no banco
-                    db.alunoDao().atualizar(aluno)
+            lifecycleScope.launch(Dispatchers.IO) {
+                val db = AppDatabase.getDatabase(requireContext())
+                if (alunoId != null) {
+                    val aluno = db.alunoDao().buscarPorId(alunoId!!)
+                    if (aluno != null) {
+                        aluno.nome = nome
+                        aluno.escola = escola
+                        aluno.endereco = endereco
+                        aluno.periodo = periodo
+                        aluno.responsavelId = responsavelSelecionado.id
+                        aluno.curso = curso
 
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Aluno atualizado!", Toast.LENGTH_SHORT).show()
-                        requireActivity().onBackPressed()
+                        db.alunoDao().atualizar(aluno)
+
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "Aluno atualizado!", Toast.LENGTH_SHORT).show()
+                            requireActivity().onBackPressed()
+                        }
                     }
                 }
             }
+        } else {
+            Toast.makeText(requireContext(), "Selecione um responsável", Toast.LENGTH_SHORT).show()
         }
     }
 }
