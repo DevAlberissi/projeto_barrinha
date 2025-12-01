@@ -9,18 +9,72 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_main"
-        android:id="@+id/app_bar_main" />
+        android:id="@+id/app_bar_main"
+        layout="@layout/app_bar_main" />
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:background="#1a58a6"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"
-        app:itemTextColor="@color/nav_item_color_white"
-        app:itemIconTint="@color/nav_item_color_white" />
+        android:background="@color/azul_escuro">
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer"
+            app:itemTextColor="@color/nav_item_color_white"
+            app:itemIconTint="@color/nav_item_color_white"
+            app:elevation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/separator" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/layout_footer" />
+
+        <LinearLayout
+            android:id="@+id/layout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/btnMeusDados"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Editar Cadastro"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/ic_editar_perfil"
+                app:drawableTint="@color/white"
+                android:drawablePadding="32dp" />
+
+            <TextView
+                android:id="@+id/btnSair"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Sair"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/logout"
+                app:drawableTint="@color/white"
+                android:drawablePadding="32dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

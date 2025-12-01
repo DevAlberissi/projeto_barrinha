@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes, R.id.nav_lista_responsaveis,
-                R.id.nav_cadastro_veiculo
+                R.id.nav_cadastro_veiculo, R.id.nav_veiculos
             ),
             drawerLayout
         )
@@ -72,20 +72,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.nav_detalhes -> {
-                    navController.popBackStack(R.id.nav_home, false)
-                    navController.navigate(R.id.nav_detalhes)
-                    drawerLayout.closeDrawers()
-                    true
-                }
-
-                R.id.nav_logout -> {
-                    navController.popBackStack(navController.graph.startDestinationId, true)
-                    navController.navigate(R.id.nav_login)
-                    drawerLayout.closeDrawers()
-                    true
-                }
-
                 R.id.nav_lista_responsaveis -> {
                     navController.popBackStack(R.id.nav_home, false) // Opcional: limpa a pilha
                     navController.navigate(R.id.nav_lista_responsaveis)
@@ -100,8 +86,30 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.nav_veiculos -> {
+                    navController.popBackStack(R.id.nav_home, false)
+                    navController.navigate(R.id.nav_veiculos)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+
                 else -> false
             }
+        }
+
+        val btnMeusDados = findViewById<android.widget.TextView>(R.id.btnMeusDados)
+        btnMeusDados.setOnClickListener {
+            navController.popBackStack(R.id.nav_home, false)
+            navController.navigate(R.id.nav_detalhes)
+            drawerLayout.closeDrawers()
+        }
+
+        // Botão Sair
+        val btnSair = findViewById<android.widget.TextView>(R.id.btnSair)
+        btnSair.setOnClickListener {
+            navController.popBackStack(navController.graph.startDestinationId, true)
+            navController.navigate(R.id.nav_login)
+            drawerLayout.closeDrawers()
         }
     }
 

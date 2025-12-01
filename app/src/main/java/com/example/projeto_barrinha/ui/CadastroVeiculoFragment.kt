@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.projeto_barrinha.databinding.FragmentCadastroVeiculoBinding
 import com.example.projeto_barrinha.data.AppDatabase
 import kotlinx.coroutines.launch
@@ -59,7 +60,7 @@ class CadastroVeiculoFragment : Fragment() {
             val veiculoDao = AppDatabase.getDatabase(requireContext()).veiculoDao()
             veiculoDao.insert(veiculo)
             Toast.makeText(requireContext(), "Veículo salvo com sucesso!", Toast.LENGTH_SHORT).show()
-            // Limpar campos ou navegar para outra tela
+            findNavController().popBackStack()
         }
     }
 

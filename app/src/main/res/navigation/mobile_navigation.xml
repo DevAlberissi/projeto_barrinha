@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/nav_login">
 
-    <!-- Tela de Login - startDestination -->
     <fragment
         android:id="@+id/nav_login"
         android:name="com.example.projeto_barrinha.ui.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login" >
 
-        <!-- Ação para ir para Registro -->
         <action
             android:id="@+id/action_nav_login_to_nav_register"
             app:destination="@id/nav_register" />
@@ -22,21 +20,18 @@
             app:popUpToInclusive="true" />
     </fragment>
 
-    <!-- Tela de Registro -->
     <fragment
         android:id="@+id/nav_register"
         android:name="com.example.projeto_barrinha.ui.RegisterFragment"
         android:label="Registrar"
         tools:layout="@layout/fragment_register" >
 
-        <!-- Ação para voltar para Login -->
         <action
             android:id="@+id/action_nav_register_to_nav_login"
             app:destination="@id/nav_login" />
     </fragment>
 
 
-    <!-- Tela Home -->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.projeto_barrinha.ui.HomeFragment"
@@ -51,14 +46,12 @@
             app:destination="@id/nav_cad_alunos" />
     </fragment>
 
-    <!-- Tela Editar Alunos -->
     <fragment
         android:id="@+id/nav_edit_alunos"
         android:name="com.example.projeto_barrinha.ui.EditAlunosFragment"
         android:label="Editar Aluno"
         tools:layout="@layout/fragment_edit_alunos" />
 
-    <!-- Tela Alunos -->
     <fragment
         android:id="@+id/nav_alunos"
         android:name="com.example.projeto_barrinha.ui.AlunosFragment"
@@ -72,9 +65,11 @@
         <action
             android:id="@+id/action_nav_alunos_to_nav_edit_alunos"
             app:destination="@id/nav_edit_alunos" />
+        <action
+            android:id="@+id/action_nav_alunos_to_nav_lista_responsaveis"
+            app:destination="@id/nav_lista_responsaveis" />
     </fragment>
 
-    <!-- Tela Cadastro Alunos -->
     <fragment
         android:id="@+id/nav_cad_alunos"
         android:name="com.example.projeto_barrinha.ui.cad_aluno"
@@ -104,9 +99,14 @@
         android:name="com.example.projeto_barrinha.ui.VeiculosFragment"
         android:label="Veículos"
         tools:layout="@layout/fragment_veiculos" >
+
         <action
             android:id="@+id/action_nav_veiculos_to_nav_cadastro_veiculo"
             app:destination="@id/nav_cadastro_veiculo" />
+
+        <action
+            android:id="@+id/action_nav_veiculos_to_nav_edit_veiculo"
+            app:destination="@id/nav_edit_veiculo" />
     </fragment>
 
     <fragment
@@ -114,4 +114,15 @@
         android:name="com.example.projeto_barrinha.ui.CadastroVeiculoFragment"
         android:label="Cadastro de Veículo"
         tools:layout="@layout/fragment_cadastro_veiculo" />
+
+    <fragment
+        android:id="@+id/nav_edit_veiculo"
+        android:name="com.example.projeto_barrinha.ui.EditVeiculoFragment"
+        android:label="Editar Veículo"
+        tools:layout="@layout/fragment_edit_veiculos">
+
+        <argument
+            android:name="veiculoId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

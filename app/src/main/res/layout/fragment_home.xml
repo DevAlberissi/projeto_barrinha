@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F5"
-    tools:context=".ui.MainActivity">
+    android:background="@color/fundo_geral"
+    tools:context=".ui.HomeFragment">
 
     <View
         android:id="@+id/top_arc_background"
         android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:background="#1a58a6"
+        android:layout_height="200dp"
+        android:background="@color/azul_escuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,9 +20,10 @@
         android:id="@+id/title_dashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dashboard"
+        android:layout_marginBottom="48dp"
+        android:text="Visão Geral"
         android:textColor="@android:color/white"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/top_arc_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,144 +32,97 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_periodo_atual"
-        android:backgroundTint="@color/white"
+        android:id="@+id/card_principal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_arc_background"
-        app:strokeColor="#03A9F4"
-        app:strokeWidth="2dp">
+        app:layout_constraintTop_toBottomOf="@id/title_dashboard"
+        app:layout_constraintBottom_toTopOf="@id/button_ver_lista">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:backgroundTint="@color/white"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp">
 
             <TextView
-                android:id="@+id/label_periodo_atual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Período Atual"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/text_periodo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Manhã"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_periodo_atual" />
-
-            <TextView
-                android:id="@+id/text_alternar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Clique para alternar (Manhã/Tarde)"
-                android:textColor="@android:color/darker_gray"
+                android:text="Alunos Cadastrados"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:textColor="@color/text_grey"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_periodo" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_alunos"
-        android:backgroundTint="@color/white"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_periodo_atual"
-        app:strokeColor="#FFB74D"
-        app:strokeWidth="2dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:backgroundTint="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/label_alunos_periodo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alunos no Período (Manhã)"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/label_total"
+                android:id="@+id/textTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Total de Alunos"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_alunos_periodo" />
+                android:text="0"
+                android:textColor="@color/azul_escuro"
+                android:textSize="80sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_total"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/togglePeriodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="20"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_total" />
+                android:layout_marginTop="24dp"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                app:checkedButton="@id/btnManha">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnManha"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manhã"
+                    android:textColor="@color/selector_toggle_text"
+                    app:backgroundTint="@color/selector_toggle_bg"
+                    app:strokeColor="@color/selector_toggle_stroke" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTarde"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarde"
+                    android:textColor="@color/selector_toggle_text"
+                    app:backgroundTint="@color/selector_toggle_bg"
+                    app:strokeColor="@color/selector_toggle_stroke" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_ver_lista"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:padding="12dp"
-        android:text="Ver Lista de Alunos"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Ver Lista Completa"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="16sp"
-        app:backgroundTint="#F44336"
-        app:cornerRadius="24dp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/azul_escuro"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/ic_student"
         app:iconGravity="textStart"
-        app:iconPadding="16dp"
         app:iconTint="@android:color/white"
         app:layout_constraintBottom_toTopOf="@id/button_cadastrar_aluno"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,20 +131,20 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_cadastrar_aluno"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:padding="12dp"
-        android:text="Cadastrar Novo Aluno"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="Novo Aluno"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
+        android:textColor="@color/azul_escuro"
         android:textSize="16sp"
-        app:backgroundTint="#0D47A1"
-        app:cornerRadius="24dp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/amarelo_claro"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/plus"
         app:iconGravity="textStart"
-        app:iconPadding="16dp"
-        app:iconTint="@android:color/white"
+        app:iconTint="@color/azul_escuro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -35,10 +35,11 @@
                 android:textColor="@android:color/white"
                 android:layout_marginBottom="8dp"/>
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_nome_veiculo"
+                android:id="@+id/etNomeVeiculoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ex: Van Sprinter"
+                android:textColor="@color/black"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
@@ -53,10 +54,11 @@
                 android:textColor="@android:color/white"
                 android:layout_marginBottom="8dp"/>
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_ano_veiculo"
+                android:id="@+id/etAnoVeiculoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ex: 2023"
+                android:textColor="@color/black"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
@@ -71,10 +73,11 @@
                 android:textColor="@android:color/white"
                 android:layout_marginBottom="8dp"/>
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_placa_veiculo"
+                android:id="@+id/etPlacaVeiculoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ex: ABC-1234"
+                android:textColor="@color/black"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
@@ -90,10 +93,11 @@
                 android:textColor="@android:color/white"
                 android:layout_marginBottom="8dp"/>
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_cor_veiculo"
+                android:id="@+id/etCorVeiculoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ex: Branco"
+                android:textColor="@color/black"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
@@ -108,10 +112,11 @@
                 android:textColor="@android:color/white"
                 android:layout_marginBottom="8dp"/>
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_edit_assentos_veiculo"
+                android:id="@+id/etAssentosVeiculoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ex: 15"
+                android:textColor="@color/black"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"

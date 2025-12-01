@@ -17,7 +17,7 @@
             android:id="@+id/ic_student"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_people"
+            android:src="@drawable/ic_student"
             app:tint="@color/azul_escuro"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
