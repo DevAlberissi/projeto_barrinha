@@ -14,6 +14,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cadastro">Cadastro</string>
+    <string name="gabriel_firmino_2402912">Gabriel Firmino - 2402912</string>
+    <string name="miguel_condello_24038777">Miguel Condello - 24038777</string>
+    <string name="vitor_oliveira_2403060">Vitor Oliveira - 2403060</string>
+    <string name="anderson_martins_alberissi_2403321">Anderson Martins Alberissi - 2403321</string>
+    <string name="jo_o_victor_fran_a_2402779">João Victor França - 2402779</string>
+    <string name="anderson_alberissi_2403321">Anderson Alberissi - 2403321</string>
 
 
     <style name="TableHeader">
