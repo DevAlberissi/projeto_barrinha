@@ -42,7 +42,7 @@ class cad_aluno : Fragment() {
         val btnSalvar: Button = view.findViewById(R.id.btnSalvarCad)
 
         val periodos = arrayOf("Manhã", "Tarde")
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, periodos)
+        val adapter = ArrayAdapter(requireContext(), R.layout.item_spinner, periodos)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPeriodo.adapter = adapter
         carregarResponsaveis()
@@ -94,7 +94,7 @@ class cad_aluno : Fragment() {
             listaResponsaveis = db.responsavelDao().listarTodos()
             withContext(Dispatchers.Main) {
                 val nomes = listaResponsaveis.map { it.nome }
-                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, nomes)
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_spinner, nomes)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 view?.findViewById<Spinner>(R.id.spinnerResponsavel)?.adapter = adapter
             }
