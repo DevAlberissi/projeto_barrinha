@@ -31,10 +31,10 @@ O **Projeto Barrinha** é um aplicativo Android desenvolvido para otimizar a ges
   <!-- Substitua os src="" pelas URLs das suas imagens -->
 
   <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-    <img src="https://github.com/DevAlberissi/projeto_barrinha/tree/Andinho/app/prints/print_alunos.pgn" alt="Tela 1" width="250" />
-    <img src="https://github.com/DevAlberissi/projeto_barrinha/tree/Andinho/app/prints/print_home.pgn" alt="Tela 2" width="250" />
-    <img src="https://github.com/DevAlberissi/projeto_barrinha/tree/Andinho/app/prints/print_veiculos.pgn" alt="Tela 3" width="250" />
-    <img src="https://github.com/DevAlberissi/projeto_barrinha/tree/Andinho/app/prints/print_responsaveis.pgn" alt="Tela 4" width="250" />
+    <img src="https://raw.githubusercontent.com/DevAlberissi/projeto_barrinha/Andinho/app/prints/print_alunos.png" alt="Tela 1" width="250" />
+    <img src="https://raw.githubusercontent.com/DevAlberissi/projeto_barrinha/Andinho/app/prints/print_home.png" alt="Tela 2" width="250" />
+    <img src="https://raw.githubusercontent.com/DevAlberissi/projeto_barrinha/Andinho/app/prints/print_veiculos.png" alt="Tela 3" width="250" />
+    <img src="https://raw.githubusercontent.com/DevAlberissi/projeto_barrinha/Andinho/app/prints/print_responsaveis.png" alt="Tela 4" width="250" />
   </div>
 </div>
 
