@@ -88,19 +88,58 @@
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Endereço Principal"
+                android:text="CEP"
                 android:textColor="@color/white"
                 android:layout_marginBottom="8dp"/>
             <EditText
-                android:id="@+id/etRespEndereco"
+                android:id="@+id/etRespCep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Rua, Número, Bairro"
+                android:hint="00000-000"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="number"
+                android:maxLength="9"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rua / Logradouro"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etRespRua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome da Rua"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hint_grey"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
                 android:inputType="textPostalAddress"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Número"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
+            <EditText
+                android:id="@+id/etRespNumero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nº"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="text"
                 android:layout_marginBottom="32dp"/>
 
             <Button
