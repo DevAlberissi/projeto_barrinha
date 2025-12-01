@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers

@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.adapter.ResponsavelAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import model.Responsavel
+import com.example.projeto_barrinha.model.Responsavel
 
 class ResponsaveisFragment : Fragment() {
 

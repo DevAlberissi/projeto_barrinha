@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.projeto_barrinha.R
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import model.Responsavel
+import com.example.projeto_barrinha.model.Responsavel
 
 class CadResponsavelFragment : Fragment() {
 

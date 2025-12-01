@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.databinding.FragmentVeiculosBinding
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 
 class VeiculosFragment : Fragment() {
 

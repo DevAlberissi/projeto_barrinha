@@ -13,12 +13,12 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.projeto_barrinha.R
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import model.Aluno
-import model.Responsavel
+import com.example.projeto_barrinha.model.Aluno
+import com.example.projeto_barrinha.model.Responsavel
 
 class cad_aluno : Fragment() {
     private var listaResponsaveis: List<Responsavel> = emptyList()

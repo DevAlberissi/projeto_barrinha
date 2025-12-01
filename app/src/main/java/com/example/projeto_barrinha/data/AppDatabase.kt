@@ -1,14 +1,13 @@
-package data
+package com.example.projeto_barrinha.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projeto_barrinha.dao.AlunoDao
-import com.example.projeto_barrinha.dao.VeiculoDao
-import model.Aluno
-import model.Responsavel
-import model.Veiculo
+import com.example.projeto_barrinha.model.Aluno
+import com.example.projeto_barrinha.model.Responsavel
+import com.example.projeto_barrinha.model.Veiculo
 
 @Database(entities = [Aluno::class, Responsavel::class, Veiculo::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
