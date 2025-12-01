@@ -48,7 +48,7 @@ class EditAlunosFragment : Fragment() {
 
         spinnerPeriodo = view.findViewById(R.id.spinnerPeriodoEdit)
         val opcoesPeriodo = arrayOf("Manhã", "Tarde")
-        val adapterPeriodo = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, opcoesPeriodo)
+        val adapterPeriodo = ArrayAdapter(requireContext(), R.layout.item_spinner, opcoesPeriodo)
         adapterPeriodo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPeriodo.adapter = adapterPeriodo
 
@@ -83,7 +83,7 @@ class EditAlunosFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 val nomes = listaResponsaveis.map { it.nome }
-                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, nomes)
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_spinner, nomes)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinnerResponsavel.adapter = adapter
 

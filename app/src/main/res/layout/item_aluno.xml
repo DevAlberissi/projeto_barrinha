@@ -8,6 +8,7 @@
     app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
@@ -62,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Escola Exemplo"
+            android:textColor="@color/text_grey"
             android:drawablePadding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
