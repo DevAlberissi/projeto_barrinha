@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
@@ -35,17 +37,31 @@ class cad_aluno : Fragment() {
 
         val etNomeCompleto: EditText = view.findViewById(R.id.etNomeCompleto)
         val etEscola: EditText = view.findViewById(R.id.etEscola)
-        val etEndereco: EditText = view.findViewById(R.id.etEndereco)
+        val etEndereco = view.findViewById<EditText>(R.id.etEndereco)
         val spinnerPeriodo: Spinner = view.findViewById(R.id.spinnerPeriodo)
-        val spinnerResponsavel: Spinner = view.findViewById(R.id.spinnerResponsavel)
+        val spinnerResponsavel = view.findViewById<Spinner>(R.id.spinnerResponsavel)
         val etCurso: EditText = view.findViewById(R.id.etCurso)
         val btnSalvar: Button = view.findViewById(R.id.btnSalvarCad)
-
+        val cbEnderecoDiferente = view.findViewById<CheckBox>(R.id.cbEnderecoDiferente)
         val periodos = arrayOf("Manhã", "Tarde")
+
         val adapter = ArrayAdapter(requireContext(), R.layout.item_spinner, periodos)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPeriodo.adapter = adapter
         carregarResponsaveis()
+
+        cbEnderecoDiferente.setOnCheckedChangeListener { _, isChecked ->
+            etEndereco.isEnabled = isChecked
+
+            if (!isChecked && listaResponsaveis.isNotEmpty()) {
+                val posicao = spinnerResponsavel.selectedItemPosition
+                if (posicao >= 0) {
+                    etEndereco.setText(listaResponsaveis[posicao].endereco)
+                }
+            } else if (isChecked) {
+                etEndereco.requestFocus()
+            }
+        }
 
         btnSalvar.setOnClickListener {
             val nome = etNomeCompleto.text.toString()
@@ -92,11 +108,27 @@ class cad_aluno : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             val db = AppDatabase.getDatabase(requireContext())
             listaResponsaveis = db.responsavelDao().listarTodos()
+
             withContext(Dispatchers.Main) {
                 val nomes = listaResponsaveis.map { it.nome }
                 val adapter = ArrayAdapter(requireContext(), R.layout.item_spinner, nomes)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                view?.findViewById<Spinner>(R.id.spinnerResponsavel)?.adapter = adapter
+                val spinner = view?.findViewById<Spinner>(R.id.spinnerResponsavel)
+                spinner?.adapter = adapter
+
+                spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        val cbEnderecoDiferente = this@cad_aluno.view?.findViewById<CheckBox>(R.id.cbEnderecoDiferente)
+                        val etEndereco = this@cad_aluno.view?.findViewById<EditText>(R.id.etEndereco)
+
+                        if (cbEnderecoDiferente?.isChecked == false) {
+                            val responsavel = listaResponsaveis[position]
+                            etEndereco?.setText(responsavel.endereco)
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+                }
             }
         }
     }

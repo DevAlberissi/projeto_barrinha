@@ -70,27 +70,6 @@
                 android:inputType="text"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Campo Endereço -->
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Endereço"
-                android:textColor="@color/white"
-                android:layout_marginBottom="8dp"/>
-
-            <EditText
-                android:id="@+id/etEndereco"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ex: Rua das Flores, 123"
-                android:textColor="@color/black"
-                android:textColorHint="@color/hint_grey"
-                android:background="@drawable/rounded_edittext_bg"
-                android:padding="16dp"
-                android:inputType="textPostalAddress"
-                android:layout_marginBottom="16dp"/>
-
             <!-- Campo Período -->
             <TextView
                 style="@style/TextAppearance.AppCompat.Body2"
@@ -146,6 +125,36 @@
                 android:textColor="@color/black"
                 android:background="@drawable/rounded_edittext_bg"
                 android:padding="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <CheckBox
+                android:id="@+id/cbEnderecoDiferente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereço diferente do responsável"
+                android:textColor="@color/white"
+                android:buttonTint="@color/amarelo_claro"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereço"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/etEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ex: Rua das Flores, 123"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_grey"
+                android:background="@drawable/rounded_edittext_bg"
+                android:padding="16dp"
+                android:inputType="textPostalAddress"
+                android:enabled="false"
                 android:layout_marginBottom="16dp"/>
 
             <!-- Botão Salvar -->
