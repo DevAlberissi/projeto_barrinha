@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha.ui.home
+package com.example.projeto_barrinha.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.projeto_barrinha.AppDatabase
+import data.AppDatabase
 import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers

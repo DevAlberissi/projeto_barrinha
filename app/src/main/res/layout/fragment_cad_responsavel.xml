@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_dark_blue"
-    tools:context=".CadResponsavelFragment">
+    tools:context=".ui.CadResponsavelFragment">
 
     <ScrollView
         android:layout_width="match_parent"

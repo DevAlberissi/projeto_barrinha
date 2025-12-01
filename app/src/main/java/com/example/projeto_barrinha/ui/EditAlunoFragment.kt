@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha
+package com.example.projeto_barrinha.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,16 +11,19 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.projeto_barrinha.R
+import data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import model.Responsavel
 
 class EditAlunosFragment : Fragment() {
 
     private lateinit var etNomeCompleto: EditText
     private lateinit var etEscola: EditText
     private lateinit var etEndereco: EditText
-    private lateinit var etPeriodo: EditText
+    private lateinit var spinnerPeriodo: Spinner
     private lateinit var spinnerResponsavel: Spinner
     private lateinit var etCurso: EditText
     private lateinit var btnSalvarEdit: Button
@@ -28,6 +31,7 @@ class EditAlunosFragment : Fragment() {
     private var alunoId: Int? = null
     private var responsavelIdAtual: Int? = null
     private var listaResponsaveis: List<Responsavel> = emptyList()
+    private var periodoAtual: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +42,15 @@ class EditAlunosFragment : Fragment() {
         etNomeCompleto = view.findViewById(R.id.etNomeCompleto)
         etEscola = view.findViewById(R.id.etEscola)
         etEndereco = view.findViewById(R.id.etEndereco)
-        etPeriodo = view.findViewById(R.id.etPeriodo)
         spinnerResponsavel = view.findViewById(R.id.spinnerResponsavelEdit)
         etCurso = view.findViewById(R.id.etCurso)
         btnSalvarEdit = view.findViewById(R.id.btnSalvarEdit)
+
+        spinnerPeriodo = view.findViewById(R.id.spinnerPeriodoEdit)
+        val opcoesPeriodo = arrayOf("Manhã", "Tarde")
+        val adapterPeriodo = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, opcoesPeriodo)
+        adapterPeriodo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPeriodo.adapter = adapterPeriodo
 
         arguments?.let { bundle ->
             alunoId = bundle.getInt("id")
@@ -49,8 +58,15 @@ class EditAlunosFragment : Fragment() {
             etNomeCompleto.setText(bundle.getString("nome"))
             etEscola.setText(bundle.getString("escola"))
             etEndereco.setText(bundle.getString("endereco"))
-            etPeriodo.setText(bundle.getString("periodo"))
             etCurso.setText(bundle.getString("curso"))
+            periodoAtual = bundle.getString("periodo")
+
+            if (periodoAtual != null) {
+                val posicao = opcoesPeriodo.indexOf(periodoAtual)
+                if (posicao >= 0) {
+                    spinnerPeriodo.setSelection(posicao)
+                }
+            }
         }
 
         carregarResponsaveis()
@@ -85,7 +101,7 @@ class EditAlunosFragment : Fragment() {
         val nome = etNomeCompleto.text.toString()
         val escola = etEscola.text.toString()
         val endereco = etEndereco.text.toString()
-        val periodo = etPeriodo.text.toString()
+        val periodo = spinnerPeriodo.selectedItem.toString()
         val curso = etCurso.text.toString()
 
         val posicaoSelecionada = spinnerResponsavel.selectedItemPosition

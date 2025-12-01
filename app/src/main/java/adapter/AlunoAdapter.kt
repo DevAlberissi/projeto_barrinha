@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projeto_barrinha.Aluno
-import com.example.projeto_barrinha.AlunoComResponsavel
+import model.Aluno
+import model.AlunoComResponsavel
 import com.example.projeto_barrinha.R
 
 class AlunoAdapter(

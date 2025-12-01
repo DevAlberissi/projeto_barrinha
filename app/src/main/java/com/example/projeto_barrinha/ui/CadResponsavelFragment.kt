@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha
+package com.example.projeto_barrinha.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.projeto_barrinha.R
+import data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import model.Responsavel
 
 class CadResponsavelFragment : Fragment() {
 

@@ -1,18 +1,23 @@
-package com.example.projeto_barrinha
+package com.example.projeto_barrinha.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.adapter.AlunoAdapter
 import com.example.projeto_barrinha.databinding.FragmentAlunosBinding
+import data.AppDatabase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import model.Aluno
 
 class AlunosFragment : Fragment() {
 
@@ -80,14 +85,14 @@ class AlunosFragment : Fragment() {
             db.alunoDao().deletar(aluno)
 
             withContext(Dispatchers.Main) {
-                android.widget.Toast.makeText(context, "Aluno removido!", android.widget.Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Aluno removido!", Toast.LENGTH_SHORT).show()
                 carregarAlunos()
             }
         }
     }
 
     private fun confirmarExclusao(aluno: Aluno) {
-        androidx.appcompat.app.AlertDialog.Builder(requireContext())
+        AlertDialog.Builder(requireContext())
             .setTitle("Excluir Aluno?")
             .setMessage("Tem certeza que deseja excluir o aluno(a) ${aluno.nome}?")
             .setPositiveButton("Sim") { _, _ ->

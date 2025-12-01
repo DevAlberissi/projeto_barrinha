@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha
+package com.example.projeto_barrinha.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,11 +11,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.adapter.ResponsavelAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import model.Responsavel
 
 class ResponsaveisFragment : Fragment() {
 
@@ -56,7 +59,6 @@ class ResponsaveisFragment : Fragment() {
                         val bundle = Bundle()
                         bundle.putInt("idResponsavel", responsavel.id)
                         findNavController().navigate(R.id.nav_cad_responsavel, bundle)
-                        Toast.makeText(context, "Editar: ${responsavel.nome}", Toast.LENGTH_SHORT).show()
                     },
                     onExcluir = { responsavel ->
                         confirmarExclusao(responsavel)
