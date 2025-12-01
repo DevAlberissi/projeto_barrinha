@@ -104,9 +104,14 @@
         android:name="com.example.projeto_barrinha.ui.VeiculosFragment"
         android:label="Veículos"
         tools:layout="@layout/fragment_veiculos" >
+
         <action
             android:id="@+id/action_nav_veiculos_to_nav_cadastro_veiculo"
             app:destination="@id/nav_cadastro_veiculo" />
+
+        <action
+            android:id="@+id/action_nav_veiculos_to_nav_edit_veiculo"
+            app:destination="@id/nav_edit_veiculo" />
     </fragment>
 
     <fragment
@@ -114,4 +119,15 @@
         android:name="com.example.projeto_barrinha.ui.CadastroVeiculoFragment"
         android:label="Cadastro de Veículo"
         tools:layout="@layout/fragment_cadastro_veiculo" />
+
+    <fragment
+        android:id="@+id/nav_edit_veiculo"
+        android:name="com.example.projeto_barrinha.ui.EditVeiculoFragment"
+        android:label="Editar Veículo"
+        tools:layout="@layout/fragment_edit_veiculos">
+
+        <argument
+            android:name="veiculoId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

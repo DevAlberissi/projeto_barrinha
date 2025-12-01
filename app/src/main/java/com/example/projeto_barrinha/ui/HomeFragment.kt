@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.projeto_barrinha.data.AppDatabase
 import com.example.projeto_barrinha.R
+import com.example.projeto_barrinha.data.AppDatabase
 import com.example.projeto_barrinha.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,8 +18,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    private var periodoAtual = "Manhã"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,23 +31,21 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonCadastrarAluno.setOnClickListener {
-            findNavController().navigate(R.id.nav_cad_alunos)
+            findNavController().navigate(R.id.action_nav_home_to_nav_cad_alunos)
         }
 
         binding.buttonVerLista.setOnClickListener {
-            findNavController().navigate(R.id.nav_alunos)
+            findNavController().navigate(R.id.action_nav_home_to_nav_alunos)
         }
 
-
-
-        binding.cardPeriodoAtual.setOnClickListener {
-
-            periodoAtual = if (periodoAtual == "Manhã") "Tarde" else "Manhã"
-
-            atualizarContagem(periodoAtual)
+        binding.togglePeriodo.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (isChecked) {
+                val periodoSelecionado = if (checkedId == R.id.btnManha) "Manhã" else "Tarde"
+                atualizarContagem(periodoSelecionado)
+            }
         }
 
-        atualizarContagem(periodoAtual)
+        atualizarContagem("Manhã")
     }
 
     private fun atualizarContagem(periodo: String) {
@@ -58,9 +54,6 @@ class HomeFragment : Fragment() {
             val contagem = db.alunoDao().contarPorPeriodo(periodo)
 
             withContext(Dispatchers.Main) {
-                binding.textPeriodo.text = periodo
-
-                binding.labelAlunosPeriodo.text = "Alunos no Período ($periodo)"
                 binding.textTotal.text = contagem.toString()
             }
         }

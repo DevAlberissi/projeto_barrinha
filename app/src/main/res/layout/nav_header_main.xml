@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
-    android:background="#134686"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:ignore="UseCompoundDrawables">
+    android:layout_height="176dp"
+    android:background="@color/azul_escuro"
+    android:padding="24dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:layout_width="84dp"
-        android:layout_height="84dp"
-        android:paddingTop="8dp"
-        android:src="@drawable/ic_van" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_bus_left"
+        android:alpha="0.1"
+        app:tint="@color/white"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="-30dp"
+        android:layout_marginEnd="-30dp"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvNomeMotorista"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="NOME DO MOTORISTA"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        tools:text="João Victor"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubtituloHeader" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvSubtituloHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Motorista Escolar"
+        android:textColor="@color/amarelo_claro"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,41 +1,28 @@
-    <menu xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:showIn="navigation_view">
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
-        <group android:checkableBehavior="single">
-
-            <item
-                android:id="@+id/nav_home"
-                android:icon="@drawable/ic_home"
-                android:title="Início" />
-
-            <item
-                android:id="@+id/nav_detalhes"
-                android:icon="@drawable/ic_editar_perfil"
-                android:title="Usuário" />
-
-            <item
-                android:id="@+id/nav_alunos"
-                android:icon="@drawable/ic_people"
-                android:title="Alunos" />
-
-            <item
-                android:id="@+id/nav_lista_responsaveis"
-                android:icon="@drawable/ic_people"
-                android:title="Responsáveis" />
-
-            <item
-                android:id="@+id/nav_veiculos"
-                android:icon="@drawable/ic_van"
-                android:title="Veículos" />
-
-        </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Início" />
 
         <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/logout"
-            android:title="Sair"
-            android:enabled="true"
-            android:checkable="false" />
+            android:id="@+id/nav_alunos"
+            android:icon="@drawable/ic_student"
+            android:title="Alunos" />
 
-    </menu>
+        <item
+            android:id="@+id/nav_lista_responsaveis"
+            android:icon="@drawable/ic_parent"
+            android:title="Responsáveis" />
+
+        <item
+            android:id="@+id/nav_veiculos"
+            android:icon="@drawable/ic_bus_right"
+            android:title="Veículos" />
+    </group>
+
+</menu>
