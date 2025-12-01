@@ -1,88 +1,80 @@
-<div align="center">
-
-# 🚌 Projeto Barrinha
-### App de Gerenciamento de Transporte Escolar
+# Projeto Barrinha - App de Gerenciamento de Transporte Escolar
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-7F52FF?style=for-the-badge&logo=kotlin)
 ![Android Studio](https://img.shields.io/badge/Android%20Studio-Hedgehog-3DDC84?style=for-the-badge&logo=android-studio)
 ![API](https://img.shields.io/badge/API-27%2B-3DDC84?style=for-the-badge&logo=android)
-![Architecture](https://img.shields.io/badge/Architecture-MVVM-blue?style=for-the-badge)
 
-</div>
+## 📄 Descrição
 
----
-
-## 📄 Sobre o Projeto
-
-O **Projeto Barrinha** é um aplicativo Android nativo desenvolvido para otimizar e modernizar a gestão do transporte escolar.
-
-Ele atua como uma ponte eficiente entre motoristas, pais e a administração escolar, centralizando dados vitais e garantindo segurança e transparência. Com uma interface intuitiva baseada no Material Design 3, o app facilita o acompanhamento de rotas, gestão de alunos e comunicação com responsáveis.
+O **Projeto Barrinha** é um aplicativo Android desenvolvido para otimizar a gestão do transporte escolar. Ele serve como uma ponte de comunicação e organização entre motoristas, pais e a administração, centralizando informações sobre alunos, responsáveis e rotas.
 
 ---
+
 ## ✨ Funcionalidades Principais
 
-* 👤 **Autenticação Segura:** Sistema robusto de Login e Cadastro para motoristas.
-* 🏠 **Dashboard Interativo:** Painel de controle com acesso rápido às ações do dia a dia.
-* 👧 **Gestão de Alunos:**
-    * Cadastro completo de estudantes.
-    * Visualização e edição de perfis individuais.
-* 👨‍👩‍👧 **Gestão de Responsáveis:** Banco de dados de contatos dos pais/responsáveis.
-* 🗺️ **Navegação Fluida:** Menu lateral (Navigation Drawer) para transição rápida entre módulos.
-* 💾 **Persistência de Dados:** Funcionamento offline garantido pelo banco de dados local.
+-   👤 **Autenticação de Usuários:** Sistema seguro de Login e Cadastro.
+-   🏠 **Painel de Controle (Home):** Acesso rápido às principais funcionalidades do app.
+-   👧 **Gestão de Alunos:** Cadastre, visualize e edite a lista de alunos.
+-   👨‍👩‍👧 **Gestão de Responsáveis:** Mantenha uma lista atualizada dos contatos dos responsáveis.
+-   ℹ️ **Detalhes e Informações:** Acesse informações detalhadas de alunos e responsáveis.
+-   🚪 **Logout Seguro:** Encerre a sessão com segurança.
+-   UI intuitiva com **Navigation Drawer** para uma navegação fluida.
 
 ---
 
 ## 🛠️ Arquitetura e Tecnologias
 
-Este projeto segue as melhores práticas de desenvolvimento Android moderno, utilizando a arquitetura **MVVM (Model-View-ViewModel)** para garantir um código desacoplado, testável e de fácil manutenção.
+Este projeto foi desenvolvido seguindo as melhores práticas de arquitetura de software, utilizando o padrão **MVVM (Model-View-ViewModel)** para garantir um código desacoplado, testável e de fácil manutenção.
 
-### 🏗️ Estrutura
-* **Linguagem:** [Kotlin](https://kotlinlang.org/)
-* **Arquitetura:** MVVM
-* **Design Pattern:** Repository Pattern
+### Pilares Tecnológicos:
 
-### 📚 Bibliotecas e Ferramentas (Jetpack)
-| Tecnologia | Função |
-| :--- | :--- |
-| **Navigation Component** | Gerenciamento do fluxo e grafo de navegação entre Fragments. |
-| **ViewModel** | Gerenciamento de estado da UI, sobrevivendo a mudanças de configuração. |
-| **LiveData** | Observabilidade de dados e comunicação reativa com a View. |
-| **Room Database** | Abstração do SQLite para persistência de dados local (Offline First). |
-| **View Binding** | Acesso às Views de forma segura (Null-safe). |
-| **Material Design 3** | Componentes de UI modernos e acessíveis. |
-| **CircleImageView** | Manipulação de imagens de perfil circulares. |
+-   **Linguagem:** [Kotlin](https://kotlinlang.org/)
+-   **Arquitetura:** MVVM (Model-View-ViewModel)
+-   **Android Jetpack:**
+    -   `Navigation Component`: Gerenciamento de fluxo de navegação.
+    -   `ViewModel`: Gerenciamento de estado da UI, resistente a mudanças de configuração.
+    -   `LiveData`: Comunicação reativa entre ViewModel e View.
+    -   `Room`: Banco de dados local para persistência de dados offline.
+    -   `ViewBinding`: Vinculação de views de forma segura e eficiente.
+-   **UI/UX:**
+    -   `Material Design 3`: Componentes modernos para uma interface rica e consistente.
+    -   `CircleImageView`: Para exibição de imagens de perfil.
+-   **Gerenciamento de Dependências:** [Gradle](https://gradle.org/)
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Como Começar
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento:
+Siga os passos abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento.
 
-### Pré-requisitos
-* Android Studio Hedgehog (ou superior)
-* JDK 11 (ou superior)
+**Pré-requisitos:**
+-   Android Studio Hedgehog (ou superior)
+-   JDK 11 (ou superior)
 
-### Passo a Passo
+**Instalação:**
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/SEU_USUARIO/projeto-barrinha.git
+    git clone https://SEU_USUARIO/projeto-barrinha.git
     ```
-
 2.  **Abra no Android Studio:**
-    * Inicie o Android Studio.
-    * Selecione `Open an existing project`.
-    * Navegue até a pasta clonada.
-
-3.  **Sincronização:**
-    * Aguarde o Gradle baixar as dependências e indexar o projeto.
-
-4.  **Execução:**
-    * Conecte um dispositivo físico via USB ou inicie um Emulador (AVD).
-    * Clique no botão **Run** (▶️) ou pressione `Shift + F10`.
+    -   Inicie o Android Studio.
+    -   Selecione `Open an existing project`.
+    -   Navegue até o diretório onde você clonou o projeto e selecione-o.
+3.  **Sincronize o Gradle:**
+    -   O Android Studio irá sincronizar automaticamente as dependências do projeto.
+4.  **Execute o aplicativo:**
+    -   Selecione um emulador ou conecte um dispositivo físico.
+    -   Clique no botão `Run 'app'` (▶️).
 
 ---
 
-<div align="center">
+## 🤝 Como Contribuir
 
-</div>
+Contribuições são o que tornam a comunidade de código aberto um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
+
+1.  Faça um **Fork** do projeto.
+2.  Crie sua **Feature Branch** (`git checkout -b feature/AmazingFeature`).
+3.  Faça o **Commit** de suas mudanças (`git commit -m 'Add some AmazingFeature'`).
+4.  Faça o **Push** para a Branch (`git push origin feature/AmazingFeature`).
+5.  Abra um **Pull Request**.
