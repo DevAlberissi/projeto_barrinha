@@ -19,17 +19,6 @@ O **Projeto Barrinha** é um aplicativo Android nativo desenvolvido para otimiza
 Ele atua como uma ponte eficiente entre motoristas, pais e a administração escolar, centralizando dados vitais e garantindo segurança e transparência. Com uma interface intuitiva baseada no Material Design 3, o app facilita o acompanhamento de rotas, gestão de alunos e comunicação com responsáveis.
 
 ---
-
-## 📱 Screenshots
-
-| Login | Dashboard | Lista de Alunos | Detalhes |
-|:---:|:---:|:---:|:---:|
-| <img src="URL_DA_IMAGEM_LOGIN" width="200" /> | <img src="URL_DA_IMAGEM_HOME" width="200" /> | <img src="URL_DA_IMAGEM_LISTA" width="200" /> | <img src="URL_DA_IMAGEM_DETALHE" width="200" /> |
-
-*(Substitua `URL_DA_IMAGEM` pelos links das capturas de tela do seu app)*
-
----
-
 ## ✨ Funcionalidades Principais
 
 * 👤 **Autenticação Segura:** Sistema robusto de Login e Cadastro para motoristas.
