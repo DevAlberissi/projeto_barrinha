@@ -39,6 +39,10 @@ class AlunosFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_alunos_to_nav_cad_alunos)
         }
 
+        binding.btnVerResponsaveis.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_alunos_to_nav_lista_responsaveis)
+        }
+
         binding.recyclerAlunos.layoutManager = LinearLayoutManager(requireContext())
 
         carregarAlunos()

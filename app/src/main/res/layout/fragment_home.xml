@@ -121,7 +121,7 @@
         android:textStyle="bold"
         app:backgroundTint="@color/azul_escuro"
         app:cornerRadius="16dp"
-        app:icon="@drawable/ic_people"
+        app:icon="@drawable/ic_student"
         app:iconGravity="textStart"
         app:iconTint="@android:color/white"
         app:layout_constraintBottom_toTopOf="@id/button_cadastrar_aluno"
