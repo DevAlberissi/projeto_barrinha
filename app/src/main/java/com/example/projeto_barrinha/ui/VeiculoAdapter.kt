@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projeto_barrinha.databinding.ItemVeiculoBinding
-import model.Veiculo
+import com.example.projeto_barrinha.model.Veiculo
 
 // 1. Crie esta interface para "avisar" a Activity
 interface VeiculoListener {

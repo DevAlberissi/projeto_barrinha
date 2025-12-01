@@ -1,4 +1,4 @@
-package model
+package com.example.projeto_barrinha.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

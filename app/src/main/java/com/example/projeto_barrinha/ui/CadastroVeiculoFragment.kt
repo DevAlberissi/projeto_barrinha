@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.projeto_barrinha.databinding.FragmentCadastroVeiculoBinding
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 import kotlinx.coroutines.launch
-import model.Veiculo
+import com.example.projeto_barrinha.model.Veiculo
 
 class CadastroVeiculoFragment : Fragment() {
 

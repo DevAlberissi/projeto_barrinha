@@ -1,4 +1,4 @@
-package model
+package com.example.projeto_barrinha.model
 
 import androidx.room.Embedded
 import androidx.room.Relation

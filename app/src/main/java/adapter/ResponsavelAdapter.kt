@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projeto_barrinha.R
-import model.Responsavel
+import com.example.projeto_barrinha.model.Responsavel
 
 class ResponsavelAdapter(
     private val lista: List<Responsavel>,

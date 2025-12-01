@@ -6,8 +6,8 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import model.Aluno
-import model.AlunoComResponsavel
+import com.example.projeto_barrinha.model.Aluno
+import com.example.projeto_barrinha.model.AlunoComResponsavel
 
 @Dao
 interface AlunoDao {

@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projeto_barrinha.R
 import com.example.projeto_barrinha.adapter.AlunoAdapter
 import com.example.projeto_barrinha.databinding.FragmentAlunosBinding
-import data.AppDatabase
+import com.example.projeto_barrinha.data.AppDatabase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import model.Aluno
+import com.example.projeto_barrinha.model.Aluno
 
 class AlunosFragment : Fragment() {
 
