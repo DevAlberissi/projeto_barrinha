@@ -66,7 +66,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU_USUARIO/projeto-barrinha.git](https://github.com/SEU_USUARIO/projeto-barrinha.git)
+    git clone https://github.com/SEU_USUARIO/projeto-barrinha.git
     ```
 
 2.  **Abra no Android Studio:**
