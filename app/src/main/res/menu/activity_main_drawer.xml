@@ -24,6 +24,10 @@
                 android:icon="@drawable/ic_people"
                 android:title="Responsáveis" />
 
+            <item
+                android:id="@+id/nav_veiculos"
+                android:icon="@drawable/ic_van"
+                android:title="Veículos" />
 
         </group>
 

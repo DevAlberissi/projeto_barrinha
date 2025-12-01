@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes, R.id.nav_lista_responsaveis),
+            setOf(
+                R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes, R.id.nav_lista_responsaveis,
+                R.id.nav_cadastro_veiculo
+            ),
             drawerLayout
         )
 
@@ -52,7 +55,6 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
             }
         }
-
 
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -87,6 +89,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_lista_responsaveis -> {
                     navController.popBackStack(R.id.nav_home, false) // Opcional: limpa a pilha
                     navController.navigate(R.id.nav_lista_responsaveis)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+
+                R.id.nav_cadastro_veiculo -> {
+                    navController.popBackStack(R.id.nav_home, false)
+                    navController.navigate(R.id.nav_cadastro_veiculo)
                     drawerLayout.closeDrawers()
                     true
                 }

@@ -5,14 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projeto_barrinha.dao.AlunoDao
+import com.example.projeto_barrinha.dao.VeiculoDao
 import model.Aluno
 import model.Responsavel
+import model.Veiculo
 
-@Database(entities = [Aluno::class, Responsavel::class], version = 2)
+@Database(entities = [Aluno::class, Responsavel::class, Veiculo::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun alunoDao(): AlunoDao
     abstract fun responsavelDao(): ResponsavelDao
+    abstract fun veiculoDao(): VeiculoDao
 
     companion object {
         @Volatile
