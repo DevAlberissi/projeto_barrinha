@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha
+package com.example.projeto_barrinha.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.projeto_barrinha.R
 
 class DetalhesUsuarioFragment : Fragment() {
 

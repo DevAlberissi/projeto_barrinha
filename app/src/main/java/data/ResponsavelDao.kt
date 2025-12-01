@@ -1,10 +1,11 @@
-package com.example.projeto_barrinha
+package data
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import model.Responsavel
 
 @Dao
 interface ResponsavelDao {

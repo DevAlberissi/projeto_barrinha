@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha
+package com.example.projeto_barrinha.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +12,13 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.projeto_barrinha.R
+import data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import model.Aluno
+import model.Responsavel
 
 class cad_aluno : Fragment() {
     private var listaResponsaveis: List<Responsavel> = emptyList()

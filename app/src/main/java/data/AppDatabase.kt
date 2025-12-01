@@ -1,10 +1,12 @@
-package com.example.projeto_barrinha
+package data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projeto_barrinha.dao.AlunoDao
+import model.Aluno
+import model.Responsavel
 
 @Database(entities = [Aluno::class, Responsavel::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {

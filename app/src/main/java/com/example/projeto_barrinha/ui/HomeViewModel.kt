@@ -1,4 +1,4 @@
-package com.example.projeto_barrinha.ui.home
+package com.example.projeto_barrinha.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

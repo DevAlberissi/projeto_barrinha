@@ -7,7 +7,7 @@
     <!-- Tela de Login - startDestination -->
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.example.projeto_barrinha.LoginFragment"
+        android:name="com.example.projeto_barrinha.ui.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login" >
 
@@ -25,7 +25,7 @@
     <!-- Tela de Registro -->
     <fragment
         android:id="@+id/nav_register"
-        android:name="com.example.projeto_barrinha.RegisterFragment"
+        android:name="com.example.projeto_barrinha.ui.RegisterFragment"
         android:label="Registrar"
         tools:layout="@layout/fragment_register" >
 
@@ -39,7 +39,7 @@
     <!-- Tela Home -->
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.projeto_barrinha.ui.home.HomeFragment"
+        android:name="com.example.projeto_barrinha.ui.HomeFragment"
         android:label="Início"
         tools:layout="@layout/fragment_home" >
 
@@ -54,14 +54,14 @@
     <!-- Tela Editar Alunos -->
     <fragment
         android:id="@+id/nav_edit_alunos"
-        android:name="com.example.projeto_barrinha.EditAlunosFragment"
+        android:name="com.example.projeto_barrinha.ui.EditAlunosFragment"
         android:label="Editar Aluno"
         tools:layout="@layout/fragment_edit_alunos" />
 
     <!-- Tela Alunos -->
     <fragment
         android:id="@+id/nav_alunos"
-        android:name="com.example.projeto_barrinha.AlunosFragment"
+        android:name="com.example.projeto_barrinha.ui.AlunosFragment"
         android:label="Alunos"
         tools:layout="@layout/fragment_alunos" >
 
@@ -77,25 +77,25 @@
     <!-- Tela Cadastro Alunos -->
     <fragment
         android:id="@+id/nav_cad_alunos"
-        android:name="com.example.projeto_barrinha.CadAlunoFragment"
+        android:name="com.example.projeto_barrinha.ui.cad_aluno"
         android:label="Cadastro de Aluno"
         tools:layout="@layout/fragment_cad_aluno" />
 
     <fragment
         android:id="@+id/nav_detalhes"
-        android:name="com.example.projeto_barrinha.DetalhesUsuarioFragment"
+        android:name="com.example.projeto_barrinha.ui.DetalhesUsuarioFragment"
         android:label="Meus Dados"
         tools:layout="@layout/fragment_detalhes_usuario" />
 
     <fragment
         android:id="@+id/nav_cad_responsavel"
-        android:name="com.example.projeto_barrinha.CadResponsavelFragment"
+        android:name="com.example.projeto_barrinha.ui.CadResponsavelFragment"
         android:label="Cadastro de Responsável"
         tools:layout="@layout/fragment_cad_responsavel" />
 
     <fragment
         android:id="@+id/nav_lista_responsaveis"
-        android:name="com.example.projeto_barrinha.ResponsaveisFragment"
+        android:name="com.example.projeto_barrinha.ui.ResponsaveisFragment"
         android:label="Responsáveis"
         tools:layout="@layout/fragment_responsaveis" />
 </navigation>
